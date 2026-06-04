@@ -6,6 +6,10 @@
     <title>Allan Muriiithi | FullStack Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
       href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Unbounded:wght@400;700;900&family=JetBrains+Mono:wght@300;400&display=swap"
       rel="stylesheet"
     />
@@ -53,7 +57,13 @@
         overflow-x: hidden;
         cursor: none;
       }
-
+      .slide-icon-box i {
+        font-size: 68px;
+        transition: transform 0.2s;
+      }
+      .slide-icon-box:hover i {
+        transform: scale(1.05);
+      }
       /* CURSOR */
       #cursor-ring {
         position: fixed;
@@ -2171,15 +2181,15 @@
           name: "MongoDB",
           cat: "Database",
           color: "#22c55e",
-          icon: "&#129827;",
-          desc: "NoSQL document database powering scalable, flexible data storage for all my back-end applications.",
+          faIcon: "fas fa-database",
+          desc: "NoSQL document database powering scalable, flexible data storage.",
           tags: ["Schemas", "Aggregation", "Atlas", "Mongoose"],
         },
         {
           name: "Express.js",
           cat: "Backend Framework",
           color: "#d1d5db",
-          icon: "&#9889;",
+          faIcon: "fas fa-bolt",
           desc: "Minimal and fast Node.js web framework used to build RESTful APIs and server-side logic.",
           tags: ["REST APIs", "Middleware", "Routing", "MVC"],
         },
@@ -2187,7 +2197,7 @@
           name: "React.js",
           cat: "Frontend Library",
           color: "#22d3ee",
-          icon: "&#9883;&#65039;",
+          faIcon: "fab fa-react",
           desc: "Component-based UI library for building interactive, performant single-page applications.",
           tags: ["Hooks", "Context", "React Router", "SPA"],
         },
@@ -2195,15 +2205,15 @@
           name: "Node.js",
           cat: "Runtime",
           color: "#84cc16",
-          icon: "&#129001;",
-          desc: "JavaScript runtime that lets me build fast, event-driven back-end services with ease.",
+          faIcon: "fab fa-node-js",
+          desc: "JavaScript runtime that lets me build fast, event-driven back-end services.",
           tags: ["npm", "Event Loop", "Streams", "ES Modules"],
         },
         {
           name: "Git",
           cat: "Version Control",
           color: "#f97316",
-          icon: "&#128256;",
+          faIcon: "fab fa-git-alt",
           desc: "Version control system used across all projects for collaboration, branching, and CI/CD pipelines.",
           tags: ["GitHub", "Branching", "PRs", "CI/CD"],
         },
@@ -2211,7 +2221,7 @@
           name: "Linux",
           cat: "Operating System",
           color: "#fde047",
-          icon: "&#128039;",
+          faIcon: "fab fa-linux",
           desc: "Primary development environment. Comfortable with the terminal, bash scripting, and server administration.",
           tags: ["Ubuntu", "Bash", "SSH", "Cron Jobs"],
         },
@@ -2219,7 +2229,7 @@
           name: "REST APIs",
           cat: "API Design",
           color: "#fb923c",
-          icon: "&#128268;",
+          faIcon: "fas fa-plug",
           desc: "Designed and consumed RESTful APIs across multiple client projects with proper auth and error handling.",
           tags: ["JWT", "Postman", "OpenAPI", "OAuth"],
         },
@@ -2227,7 +2237,7 @@
           name: "Framer Motion",
           cat: "Animation",
           color: "#f472b6",
-          icon: "&#127916;",
+          faIcon: "fas fa-cubes",
           desc: "Production-ready animation library used to craft fluid, physics-based interactions across UIs.",
           tags: ["Variants", "Gestures", "ScrollTrigger", "Spring"],
         },
@@ -2235,7 +2245,7 @@
           name: "Tailwind CSS",
           cat: "Styling",
           color: "#38bdf8",
-          icon: "&#127912;",
+          faIcon: "fab fa-css3-alt",
           desc: "Utility-first CSS framework that accelerates UI development without leaving the HTML.",
           tags: ["Responsive", "Dark Mode", "JIT", "Custom Config"],
         },
@@ -2243,7 +2253,7 @@
           name: "Next.js",
           cat: "Framework",
           color: "#ffffff",
-          icon: "&#9650;",
+          faIcon: "fab fa-react",
           desc: "React framework with SSR, SSG, and ISR for building production-grade web applications.",
           tags: ["SSR", "SSG", "App Router", "API Routes"],
         },
@@ -2251,7 +2261,7 @@
           name: "TypeScript",
           cat: "Language",
           color: "#3b82f6",
-          icon: "&#128216;",
+          faIcon: "fas fa-code",
           desc: "Typed superset of JavaScript used to write safer, more maintainable code across large codebases.",
           tags: ["Types", "Generics", "Interfaces", "TSConfig"],
         },
@@ -2259,13 +2269,11 @@
           name: "Docker",
           cat: "DevOps",
           color: "#0ea5e9",
-          icon: "&#128051;",
+          faIcon: "fab fa-docker",
           desc: "Containerisation tool used to package applications and ensure consistent environments in deployment.",
           tags: ["Containers", "Docker Compose", "Images", "Registry"],
         },
       ];
-
-      /* RENDER PROJECTS */
       document.getElementById("projects-grid").innerHTML = projects
         .map(
           (p) => `
@@ -2347,25 +2355,8 @@
 
         wrap.innerHTML = skillsData
           .map(
-            (s, i) => `
-          <div class="skills-slide${i === 0 ? " active" : ""}" data-idx="${i}">
-            <div class="slide-inner">
-              <div class="slide-icon-wrap">
-                <div class="slide-icon-box">
-                  <div class="slide-icon-glow" style="background:${s.color}"></div>
-                  <span>${s.icon}</span>
-                </div>
-                <div class="slide-num" style="color:${s.color}">${String(i + 1).padStart(2, "0")} / ${String(total).padStart(2, "0")}</div>
-              </div>
-              <div class="slide-info">
-                <div class="slide-cat" style="color:${s.color}">${s.cat}</div>
-                <div class="slide-name" style="color:${s.color}">${s.name}</div>
-                <div class="slide-desc">${s.desc}</div>
-                <div class="slide-tags">${s.tags.map((t) => `<span class="slide-tag">${t}</span>`).join("")}</div>
-              </div>
-            </div>
-          </div>
-        `,
+            (s, i) =>
+              `<div class="skills-slide${i === 0 ? " active" : ""}" data-idx="${i}"><div class="slide-inner"><div class="slide-icon-wrap"><div class="slide-icon-box"><div class="slide-icon-glow" style="background:${s.color}"></div><i class="${s.faIcon}" style="font-size: 68px; color: ${s.color};"></i></div><div class="slide-num" style="color:${s.color}">${String(i + 1).padStart(2, "0")} / ${String(total).padStart(2, "0")}</div></div><div class="slide-info"><div class="slide-cat" style="color:${s.color}">${s.cat}</div><div class="slide-name" style="color:${s.color}">${s.name}</div><div class="slide-desc">${s.desc}</div><div class="slide-tags">${s.tags.map((t) => `<span class="slide-tag">${t}</span>`).join("")}</div></div></div></div>`,
           )
           .join("");
 
