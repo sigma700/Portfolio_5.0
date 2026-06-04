@@ -1,0 +1,13 @@
+{
+  "name": "Allan Muriithi | Full-Stack Engineer",
+  "short_name": "Allan.Dev",
+  "description": "Full-stack engineer based in Nairobi building premium web products.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#020408",
+  "theme_color": "#84cc16",
+  "icons": [
+    {"src": "favicon-32x32.png", "sizes": "32x32", "type": "image/png"},
+    {"src": "apple-touch-icon.png", "sizes": "180x180", "type": "image/png"}
+  ]
+}
