@@ -1072,11 +1072,16 @@
         height: 100%;
         object-fit: cover;
         display: block;
-        filter: brightness(0.82) saturate(0.85);
+        filter: brightness(0.82) saturate(0.85) blur(8px);
         transition:
           filter 0.5s,
           transform 0.6s ease;
       }
+      .project-img.loaded {
+filter: blur(0px) brightness(0.82) saturate(0.85);
+      }
+
+
       .project-card:hover .project-img {
         filter: brightness(1) saturate(1.1);
         transform: scale(1.07);
@@ -2253,7 +2258,10 @@
     <!-- HERO -->
     <section id="hero">
       <div class="hero-photo-side">
-        <img src="https://res.cloudinary.com/dnadawobi/image/upload/v1780574606/my_pic_i72mbn.png" alt="Allan Muriiithi" />
+        <img
+        loading="lazy"
+        decoding="async"
+         src="https://res.cloudinary.com/dnadawobi/image/upload/v1780574606/my_pic_i72mbn.png" alt="Allan Muriiithi" />
         <div class="hero-photo-fade"></div>
         <div class="hero-photo-badge">
           <div class="hero-photo-badge-label">Satisfaction</div>
@@ -3028,7 +3036,7 @@
           (p) => `
         <div class="project-card reveal">
           <div class="project-img-wrap">
-            <img class="project-img" src="${p.image}" alt="${p.title}" onerror="this.style.background='#0a1628';this.removeAttribute('src')">
+            <img class="project-img" loading="lazy" src="${p.image}" alt="${p.title}" onerror="this.style.background='#0a1628';this.removeAttribute('src')">
             <div class="project-img-overlay"></div>
             <div class="project-hover-icon"><div class="project-hover-btn">&#8599;</div></div>
             <div class="project-shimmer"></div>
@@ -3696,6 +3704,14 @@
           }
         }, 60);
       })();
+          document.querySelectorAll('.project-img').forEach(img => {
+  if (img.complete) {
+    img.classList.add('loaded');
+  } else {
+    img.addEventListener('load', () => img.classList.add('loaded'));
+  }
+});
     </script>
+
   </body>
 </html>
