@@ -2536,8 +2536,8 @@
         <li><a href="#skills">Stack</a></li>
         <li><a href="#projects">Work</a></li>
         <li><a href="#experience">XP</a></li>
-        <li><a href="#pricing">Pricing</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li><a href="#pricing">Pricing</a></li>
       </ul>
       <a
         href="https://wa.me/792624342?text=Hello%20I'm%20interested%20in%20your%20services"
@@ -2877,7 +2877,8 @@
 
         <div class="pricing-grid">
           <!-- STARTER -->
-          <div class="price-card" data-base="35000" data-name="Starter">
+          <!-- data-base updated to 25000 -->
+          <div class="price-card" data-base="25000" data-name="Starter">
             <div class="tier-name">Starter</div>
             <p class="tier-desc">A focused launchpad for a new business.</p>
 
@@ -2925,9 +2926,10 @@
           </div>
 
           <!-- BUSINESS -->
+          <!-- data-base updated to 50000 -->
           <div
             class="price-card featured"
-            data-base="80000"
+            data-base="50000"
             data-name="Business"
           >
             <span class="badge-popular">Most popular</span>
@@ -2980,7 +2982,8 @@
           </div>
 
           <!-- E-COMMERCE -->
-          <div class="price-card" data-base="150000" data-name="E-commerce">
+          <!-- data-base updated to 80000 -->
+          <div class="price-card" data-base="80000" data-name="E-commerce">
             <div class="tier-name">E‑commerce</div>
             <p class="tier-desc">A complete online store, ready to sell.</p>
 
@@ -3154,12 +3157,13 @@
               </div>
               <div class="form-group">
                 <label class="form-label">Budget Range</label>
-                <!-- Budget dropdown updated to match pricing packages -->
+                <!-- Budget dropdown aligned with new pricing tiers -->
                 <select class="form-select form-input">
                   <option value="">Select budget...</option>
                   <option>Under KSh 50,000</option>
-                  <option>KSh 50,000 – KSh 80,000</option>
-                  <option>KSh 80,000 – KSh 100,000</option>
+                  <option>KSh 50,000 – KSh 100,000</option>
+                  <option>KSh 100,000 – KSh 200,000</option>
+                  <option>KSh 200,000+</option>
                 </select>
               </div>
               <div class="form-group">
@@ -4207,7 +4211,7 @@
     </script>
     <script>
       (function () {
-        const MAINTENANCE_ADDON = 5000;
+        const MAINTENANCE_ADDON = 30000;
         const WHATSAPP_BASE = "https://wa.me/792624342?text=";
 
         const cards = document.querySelectorAll(".price-card");
