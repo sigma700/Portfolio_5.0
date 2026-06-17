@@ -131,7 +131,6 @@
 
     <link rel="preload" href="og-cover.jpg" as="image" />
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
@@ -165,7 +164,6 @@
         color: var(--text);
         font-family: var(--font-body);
         overflow-x: hidden;
-        /* Default system cursor restored */
         cursor: auto;
       }
       .slide-icon-box i {
@@ -176,7 +174,6 @@
         transform: scale(1.05);
       }
 
-      /* NOISE */
       .noise-overlay {
         position: fixed;
         inset: 0;
@@ -187,7 +184,6 @@
         background-size: 128px;
       }
 
-      /* PRELOADER */
       #preloader {
         position: fixed;
         inset: 0;
@@ -229,7 +225,6 @@
         letter-spacing: 0.2em;
       }
 
-      /* SCROLL PROGRESS */
       #scroll-prog {
         position: fixed;
         top: 0;
@@ -242,7 +237,6 @@
         transform: scaleX(0);
       }
 
-      /* NAV */
       nav {
         position: fixed;
         top: 20px;
@@ -321,7 +315,6 @@
         }
       }
 
-      /* HERO */
       #hero {
         position: relative;
         min-height: 100vh;
@@ -422,38 +415,6 @@
         font-size: 10px;
         color: var(--muted);
         margin-top: 2px;
-      }
-
-      .hero-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        padding: 6px 16px;
-        border-radius: 100px;
-        border: 1px solid rgba(132, 204, 22, 0.2);
-        background: rgba(132, 204, 22, 0.05);
-        font-size: 11px;
-        font-weight: 600;
-        color: var(--lime);
-        letter-spacing: 0.2em;
-        margin-bottom: 32px;
-        opacity: 0;
-      }
-      .hero-badge-dot {
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: var(--lime);
-        animation: ping 2s infinite;
-      }
-      @keyframes ping {
-        0%,
-        100% {
-          box-shadow: 0 0 0 0 rgba(132, 204, 22, 0.5);
-        }
-        50% {
-          box-shadow: 0 0 0 8px rgba(132, 204, 22, 0);
-        }
       }
 
       .hero-name {
@@ -579,7 +540,6 @@
         text-transform: uppercase;
       }
 
-      /* SECTION BASE */
       section {
         position: relative;
       }
@@ -589,7 +549,6 @@
         padding: 0 max(24px, 4vw);
       }
 
-      /* SECTION LABEL — clean dot treatment, no decorative line */
       .section-label {
         display: inline-flex;
         align-items: center;
@@ -617,7 +576,6 @@
         transform: translateY(40px);
       }
 
-      /* ABOUT */
       #about {
         padding: 140px 0;
         background: var(--deep);
@@ -700,11 +658,6 @@
         text-transform: uppercase;
       }
 
-      /* ═══════════════════════════════════════════════════════
-         CREDENTIALS SHOWCASE — premium authority-building element
-         Sits in the right column on desktop, stacks full-width
-         on mobile. No interaction required to see full content.
-         ═══════════════════════════════════════════════════════ */
       .creds-showcase {
         display: flex;
         flex-direction: column;
@@ -938,7 +891,6 @@
         background: rgba(132, 204, 22, 0.05);
       }
 
-      /* Trust strip beneath the two cards */
       .creds-trust-strip {
         display: flex;
         align-items: center;
@@ -974,7 +926,6 @@
         }
       }
 
-      /* SKILLS */
       #skills {
         padding: 120px 0;
         background: var(--void);
@@ -1173,7 +1124,6 @@
         background: rgba(132, 204, 22, 0.06);
       }
 
-      /* PROJECTS */
       #projects {
         padding: 140px 0;
         background: var(--deep);
@@ -1378,7 +1328,6 @@
         gap: 11px;
       }
 
-      /* EXPERIENCE */
       #experience {
         padding: 140px 0;
         background: var(--void);
@@ -1532,7 +1481,6 @@
         background: var(--surface);
       }
 
-      /* TESTIMONIALS */
       #testimonials {
         padding: 140px 0;
         background: var(--deep);
@@ -1610,7 +1558,6 @@
         font-size: 12px;
       }
 
-      /* SALES CHART */
       .test-graph-section {
         margin-top: 72px;
         padding: 40px;
@@ -1702,7 +1649,6 @@
         flex-shrink: 0;
       }
 
-      /* CONTACT */
       #contact {
         padding: 140px 0;
         position: relative;
@@ -1967,7 +1913,6 @@
         margin-bottom: 10px;
       }
 
-      /* FOOTER */
       footer.ft-root {
         background: var(--void);
         font-family: var(--font-mono);
@@ -2152,11 +2097,424 @@
         border-radius: 3px;
         letter-spacing: 0.12em;
       }
+
+      #pricing {
+        padding: 80px 0;
+        background: var(--deep);
+        width: 100%;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 max(24px, 4vw);
+      }
+
+      .pricing-title {
+        font-family: var(--font-display);
+        font-size: clamp(2.2rem, 4vw, 3.8rem);
+        font-weight: 900;
+        letter-spacing: -0.03em;
+        line-height: 1.05;
+        margin-bottom: 18px;
+      }
+      .pricing-title em {
+        font-style: normal;
+        color: var(--lime);
+      }
+
+      .pricing-sub {
+        color: var(--muted);
+        font-size: 1rem;
+        line-height: 1.75;
+        max-width: 540px;
+        margin-bottom: 56px;
+      }
+
+      .toggle-wrap {
+        display: flex;
+        margin-bottom: 56px;
+      }
+      .toggle-shell {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 6px;
+        border-radius: 100px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+      .toggle-pill {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        height: calc(100% - 12px);
+        border-radius: 100px;
+        background: var(--lime);
+        box-shadow: 0 0 24px rgba(132, 204, 22, 0.35);
+        transition:
+          transform 0.45s cubic-bezier(0.65, 0, 0.35, 1),
+          width 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+        z-index: 0;
+      }
+      .toggle-option {
+        position: relative;
+        z-index: 1;
+        padding: 11px 22px;
+        border: none;
+        background: transparent;
+        border-radius: 100px;
+        font-family: var(--font-mono);
+        font-size: 11px;
+        font-weight: 400;
+        letter-spacing: 0.06em;
+        color: var(--muted);
+        cursor: pointer;
+        white-space: nowrap;
+        transition: color 0.35s ease;
+      }
+      .toggle-option.active {
+        color: var(--void);
+      }
+
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        align-items: stretch;
+      }
+      @media (max-width: 900px) {
+        .pricing-grid {
+          grid-template-columns: 1fr;
+          max-width: 440px;
+          margin: 0 auto;
+        }
+      }
+
+      .price-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        padding: 34px 30px;
+        border-radius: 22px;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        background: rgba(10, 22, 40, 0.8);
+        opacity: 0;
+        transform: translateY(36px);
+        transition:
+          transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+          border-color 0.4s ease,
+          box-shadow 0.4s ease;
+      }
+      .price-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        z-index: 2;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(132, 204, 22, 0),
+          transparent
+        );
+        transition: background 0.4s;
+        border-radius: 22px 22px 0 0;
+      }
+      .price-card.in-view {
+        animation: cardRise 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      @keyframes cardRise {
+        from {
+          opacity: 0;
+          transform: translateY(36px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .price-card:hover {
+        transform: translateY(-10px);
+        border-color: rgba(132, 204, 22, 0.35);
+        box-shadow:
+          0 40px 80px rgba(0, 0, 0, 0.55),
+          0 0 0 1px rgba(132, 204, 22, 0.1),
+          0 0 50px rgba(132, 204, 22, 0.07);
+      }
+      .price-card:hover::before {
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--lime),
+          transparent
+        );
+      }
+
+      .price-card.featured {
+        border-color: rgba(132, 204, 22, 0.3);
+        transform: translateY(0) scale(1.02);
+      }
+      .price-card.featured.in-view {
+        animation: cardRiseFeatured 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      @keyframes cardRiseFeatured {
+        from {
+          opacity: 0;
+          transform: translateY(36px) scale(1.02);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1.02);
+        }
+      }
+      @media (max-width: 900px) {
+        .price-card.featured {
+          transform: translateY(0) scale(1);
+        }
+      }
+      .price-card.featured:hover {
+        transform: translateY(-10px) scale(1.02);
+      }
+
+      .badge-popular {
+        position: absolute;
+        top: -13px;
+        left: 30px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 14px;
+        border-radius: 100px;
+        background: var(--lime);
+        color: var(--void);
+        font-family: var(--font-mono);
+        font-size: 9.5px;
+        font-weight: 400;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        animation: pulseBadge 2.6s ease-in-out infinite;
+      }
+      @keyframes pulseBadge {
+        0% {
+          box-shadow: 0 0 0 0 rgba(132, 204, 22, 0.55);
+        }
+        70% {
+          box-shadow: 0 0 0 10px rgba(132, 204, 22, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(132, 204, 22, 0);
+        }
+      }
+
+      .tier-name {
+        font-family: var(--font-display);
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: -0.01em;
+        margin-bottom: 6px;
+        margin-top: 10px;
+      }
+      .tier-desc {
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.6;
+        margin-bottom: 28px;
+      }
+
+      .price-row {
+        display: flex;
+        align-items: baseline;
+        gap: 6px;
+        min-height: 48px;
+      }
+      .price-currency {
+        font-family: var(--font-mono);
+        font-size: 1rem;
+        color: var(--muted);
+      }
+      .price-amount {
+        font-family: var(--font-display);
+        font-size: 2.3rem;
+        font-weight: 900;
+        letter-spacing: -0.02em;
+        color: var(--lime);
+        transition: opacity 0.25s ease;
+      }
+      .price-amount.swapping {
+        opacity: 0;
+      }
+
+      .price-note {
+        font-family: var(--font-mono);
+        font-size: 10.5px;
+        color: var(--muted);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin-bottom: 28px;
+        min-height: 14px;
+        transition: opacity 0.25s ease;
+      }
+      .price-note.swapping {
+        opacity: 0;
+      }
+
+      .feature-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 13px;
+        margin-bottom: 30px;
+        flex-grow: 1;
+      }
+      .feature-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        font-size: 13px;
+        color: var(--text);
+        line-height: 1.55;
+      }
+      .feature-check {
+        flex-shrink: 0;
+        width: 18px;
+        height: 18px;
+        margin-top: 1px;
+        border-radius: 50%;
+        background: rgba(132, 204, 22, 0.08);
+        border: 1px solid rgba(132, 204, 22, 0.28);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+          transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+          background 0.25s ease;
+      }
+      .feature-check svg {
+        width: 9px;
+        height: 9px;
+      }
+      .feature-check path {
+        stroke: var(--lime);
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+      }
+      .feature-list li:hover .feature-check {
+        transform: scale(1.25);
+        background: rgba(132, 204, 22, 0.18);
+      }
+
+      .cta-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        padding: 14px 0;
+        border-radius: 100px;
+        font-family: var(--font-body);
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-decoration: none;
+        cursor: pointer;
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--text);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        transition: all 0.3s ease;
+      }
+      .cta-btn:hover {
+        border-color: var(--lime);
+        color: var(--lime);
+        background: rgba(132, 204, 22, 0.05);
+      }
+      .cta-btn.primary {
+        background: var(--lime);
+        color: var(--void);
+        font-weight: 700;
+        border: none;
+        position: relative;
+        overflow: hidden;
+      }
+      .cta-btn.primary::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateX(-100%) skewX(-20deg);
+        transition: transform 0.4s;
+      }
+      .cta-btn.primary:hover::before {
+        transform: translateX(150%) skewX(-20deg);
+      }
+      .cta-btn.primary:hover {
+        box-shadow: 0 0 40px rgba(132, 204, 22, 0.4);
+        transform: translateY(-2px);
+        color: var(--void);
+      }
+
+      .trust-note {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        max-width: 680px;
+        margin-top: 48px;
+        padding: 16px 20px;
+        border-radius: 14px;
+        background: rgba(132, 204, 22, 0.04);
+        border: 1px solid rgba(132, 204, 22, 0.14);
+      }
+      .trust-note i {
+        color: var(--lime);
+        font-size: 13px;
+        margin-top: 2px;
+        flex-shrink: 0;
+      }
+      .trust-note span {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--muted);
+        letter-spacing: 0.02em;
+        line-height: 1.6;
+      }
+      .trust-note strong {
+        color: var(--text);
+        font-weight: 600;
+      }
+
+      @media (max-width: 480px) {
+        #pricing {
+          padding: 60px 0;
+        }
+        .price-card {
+          padding: 30px 24px;
+        }
+        .toggle-option {
+          padding: 10px 14px;
+          font-size: 10px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .price-card,
+        .badge-popular {
+          animation: none !important;
+          opacity: 1;
+          transform: none !important;
+        }
+      }
     </style>
   </head>
+
   <body>
     <div class="noise-overlay"></div>
-    <!-- Custom cursor REMOVED — system cursor restored -->
     <div id="scroll-prog"></div>
 
     <!-- PRELOADER -->
@@ -2179,6 +2537,7 @@
         <li><a href="#projects">Work</a></li>
         <li><a href="#experience">XP</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li><a href="#pricing">Pricing</a></li>
       </ul>
       <a
         href="https://wa.me/792624342?text=Hello%20I'm%20interested%20in%20your%20services"
@@ -2275,11 +2634,6 @@
             </div>
           </div>
 
-          <!-- ═══════════════════════════════════════════
-               CREDENTIALS SHOWCASE
-               Two large, always-visible glass cards with
-               mouse-responsive spotlight + 3D tilt.
-               ═══════════════════════════════════════════ -->
           <div class="creds-showcase reveal" id="creds-showcase">
             <div class="creds-kicker">
               <span class="creds-kicker-title">Verified Credentials</span>
@@ -2493,6 +2847,199 @@
       </div>
     </section>
 
+    <!-- PRICING -->
+    <section id="pricing">
+      <div class="container">
+        <div class="section-label">Investment</div>
+        <h2 class="pricing-title">
+          Pricing built for <em>Kenyan businesses.</em>
+        </h2>
+        <p class="pricing-sub">
+          Transparent, one‑time packages with no hidden costs. Pick the scope
+          that fits your business; every tier ships production‑ready.
+        </p>
+
+        <div class="toggle-wrap">
+          <div class="toggle-shell">
+            <div class="toggle-pill" id="togglePill"></div>
+            <button
+              class="toggle-option active"
+              id="toggleOnetime"
+              type="button"
+            >
+              One‑time setup
+            </button>
+            <button class="toggle-option" id="toggleMaintenance" type="button">
+              Plus 6‑month maintenance
+            </button>
+          </div>
+        </div>
+
+        <div class="pricing-grid">
+          <!-- STARTER -->
+          <div class="price-card" data-base="35000" data-name="Starter">
+            <div class="tier-name">Starter</div>
+            <p class="tier-desc">A focused launchpad for a new business.</p>
+
+            <div class="price-row">
+              <span class="price-currency">KSh</span>
+              <span class="price-amount" data-amount>35,000</span>
+            </div>
+            <div class="price-note" data-note>One‑time payment</div>
+
+            <ul class="feature-list">
+              <li>
+                <span class="feature-check"
+                  ><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" /></svg
+                ></span>
+                5 custom pages
+              </li>
+              <li>
+                <span class="feature-check"
+                  ><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" /></svg
+                ></span>
+                Fully responsive design
+              </li>
+              <li>
+                <span class="feature-check"
+                  ><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" /></svg
+                ></span>
+                Working contact form
+              </li>
+              <li>
+                <span class="feature-check"
+                  ><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" /></svg
+                ></span>
+                Basic on‑page SEO
+              </li>
+            </ul>
+
+            <a
+              class="cta-btn"
+              data-whatsapp-link
+              target="_blank"
+              rel="noopener"
+            >
+              Get started <i class="fa-brands fa-whatsapp"></i>
+            </a>
+          </div>
+
+          <!-- BUSINESS -->
+          <div
+            class="price-card featured"
+            data-base="80000"
+            data-name="Business"
+          >
+            <span class="badge-popular">Most popular</span>
+            <div class="tier-name">Business</div>
+            <p class="tier-desc">
+              For growing businesses that need more reach.
+            </p>
+
+            <div class="price-row">
+              <span class="price-currency">KSh</span>
+              <span class="price-amount" data-amount>80,000</span>
+            </div>
+            <div class="price-note" data-note>One‑time payment</div>
+
+            <ul class="feature-list">
+              <li>
+                <span class="feature-check"
+                  ><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" /></svg
+                ></span>
+                Up to 15 custom pages
+              </li>
+              <li>
+                <span class="feature-check"
+                  ><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" /></svg
+                ></span>
+                Bespoke page layouts
+              </li>
+              <li>
+                <span class="feature-check"
+                  ><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" /></svg
+                ></span>
+                CRM integration
+              </li>
+              <li>
+                <span class="feature-check"
+                  ><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" /></svg
+                ></span>
+                Full technical SEO setup
+              </li>
+            </ul>
+
+            <a
+              class="cta-btn primary"
+              data-whatsapp-link
+              target="_blank"
+              rel="noopener"
+            >
+              Get started <i class="fa-brands fa-whatsapp"></i>
+            </a>
+          </div>
+
+          <!-- E-COMMERCE -->
+          <div class="price-card" data-base="150000" data-name="E-commerce">
+            <div class="tier-name">E‑commerce</div>
+            <p class="tier-desc">A complete online store, ready to sell.</p>
+
+            <div class="price-row">
+              <span class="price-currency">KSh</span>
+              <span class="price-amount" data-amount>150,000</span>
+            </div>
+            <div class="price-note" data-note>One‑time payment</div>
+
+            <ul class="feature-list">
+              <li>
+                <span class="feature-check"
+                  ><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" /></svg
+                ></span>
+                Unlimited products
+              </li>
+              <li>
+                <span class="feature-check"
+                  ><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" /></svg
+                ></span>
+                M‑Pesa and card payments
+              </li>
+              <li>
+                <span class="feature-check"
+                  ><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" /></svg
+                ></span>
+                Inventory management
+              </li>
+              <li>
+                <span class="feature-check"
+                  ><svg viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" /></svg
+                ></span>
+                Order and customer dashboard
+              </li>
+            </ul>
+
+            <a
+              class="cta-btn"
+              data-whatsapp-link
+              target="_blank"
+              rel="noopener"
+            >
+              Get started <i class="fa-brands fa-whatsapp"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="trust-note">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span>
+            <strong>Domain, hosting, and SSL are billed separately,</strong>
+            typically KSh 2,000 to 5,000 per year depending on provider. This
+            keeps your build cost transparent and lets you own your
+            infrastructure outright.
+          </span>
+        </div>
+      </div>
+    </section>
+
     <!-- CONTACT -->
     <section id="contact">
       <div class="contact-video-bg">
@@ -2607,12 +3154,13 @@
               </div>
               <div class="form-group">
                 <label class="form-label">Budget Range</label>
+                <!-- Budget dropdown updated to match pricing packages -->
                 <select class="form-select form-input">
                   <option value="">Select budget...</option>
-                  <option>Under $500</option>
-                  <option>$500 to $2,000</option>
-                  <option>$2,000 to $5,000</option>
-                  <option>$5,000+</option>
+                  <option>Under KSh 50,000</option>
+                  <option>KSh 50,000 – KSh 100,000</option>
+                  <option>KSh 100,000 – KSh 200,000</option>
+                  <option>KSh 200,000+</option>
                 </select>
               </div>
               <div class="form-group">
@@ -3080,9 +3628,7 @@
         },
       ];
 
-      /* ═══════════════════════════════════════════════
-         RENDER PROJECTS
-         ═══════════════════════════════════════════════ */
+      /* RENDER PROJECTS */
       document.getElementById("projects-grid").innerHTML = projects
         .map(
           (p) => `
@@ -3121,20 +3667,13 @@
         )
         .join("");
 
-      /* ═══════════════════════════════════════════════
-         SCROLL PROGRESS
-         ═══════════════════════════════════════════════ */
+      /* SCROLL PROGRESS */
       const scrollProg = document.getElementById("scroll-prog");
       window.addEventListener("scroll", () => {
         scrollProg.style.transform = `scaleX(${window.scrollY / (document.body.scrollHeight - window.innerHeight)})`;
       });
 
-      /* ═══════════════════════════════════════════════
-         CREDENTIAL CARDS — mouse-responsive tilt + glow
-         Lightweight, GPU-friendly (transform only), and
-         respects prefers-reduced-motion. Disabled on
-         touch devices since there's no persistent cursor.
-         ═══════════════════════════════════════════════ */
+      /* CREDENTIAL CARDS — mouse-responsive tilt + glow */
       (function () {
         const prefersReducedMotion = window.matchMedia(
           "(prefers-reduced-motion: reduce)",
@@ -3143,7 +3682,7 @@
         if (prefersReducedMotion || isTouch) return;
 
         const cards = document.querySelectorAll(".cred-card[data-tilt]");
-        const MAX_TILT = 6; // degrees — restrained, premium feel
+        const MAX_TILT = 6;
 
         cards.forEach((card) => {
           let rafId = null;
@@ -3179,9 +3718,7 @@
         });
       })();
 
-      /* ═══════════════════════════════════════════════
-         SKILLS SLIDER
-         ═══════════════════════════════════════════════ */
+      /* SKILLS SLIDER */
       (function () {
         const wrap = document.getElementById("skills-slides");
         const dotsW = document.getElementById("skills-dots");
@@ -3234,6 +3771,7 @@
         function autoPlay() {
           timer = setInterval(() => goTo(current + 1), 4000);
         }
+
         function stopAuto() {
           clearInterval(timer);
         }
@@ -3259,9 +3797,7 @@
         autoPlay();
       })();
 
-      /* ═══════════════════════════════════════════════
-         EXPERIENCE ZIGZAG
-         ═══════════════════════════════════════════════ */
+      /* EXPERIENCE ZIGZAG */
       (function () {
         const list = document.getElementById("exp-zz-list");
         if (!list) return;
@@ -3343,9 +3879,7 @@
         animatePaths();
       })();
 
-      /* ═══════════════════════════════════════════════
-         SALES CHART
-         ═══════════════════════════════════════════════ */
+      /* SALES CHART */
       (function () {
         const canvas = document.getElementById("sales-chart");
         if (!canvas) return;
@@ -3508,6 +4042,7 @@
           if (animating) return;
           animating = true;
           progress = 0;
+
           function step() {
             progress = Math.min(progress + 0.011, 1);
             canvas.width = canvas.offsetWidth;
@@ -3519,6 +4054,7 @@
         }
 
         const sec = document.getElementById("sales-graph-section");
+
         function checkView() {
           if (!sec) return;
           if (sec.getBoundingClientRect().top < window.innerHeight * 0.85) {
@@ -3537,9 +4073,7 @@
         });
       })();
 
-      /* ═══════════════════════════════════════════════
-         TYPING EFFECT
-         ═══════════════════════════════════════════════ */
+      /* TYPING EFFECT */
       setTimeout(() => {
         new Typed("#typed-role", {
           strings: [
@@ -3557,9 +4091,7 @@
         });
       }, 1400);
 
-      /* ═══════════════════════════════════════════════
-         CONTACT FORM
-         ═══════════════════════════════════════════════ */
+      /* CONTACT FORM */
       function handleFormSubmit(e) {
         e.preventDefault();
         const btn = document.getElementById("form-btn");
@@ -3573,9 +4105,7 @@
         }, 1800);
       }
 
-      /* ═══════════════════════════════════════════════
-         GSAP SCROLL REVEALS
-         ═══════════════════════════════════════════════ */
+      /* GSAP SCROLL REVEALS */
       gsap.registerPlugin(ScrollTrigger);
       document.querySelectorAll(".reveal").forEach((el) => {
         gsap.fromTo(
@@ -3603,11 +4133,6 @@
           ease: "power4.out",
           stagger: 0.12,
         })
-        .to(
-          ".hero-badge",
-          {opacity: 1, y: 0, duration: 0.6, ease: "power3.out"},
-          "-=0.4",
-        )
         .to(
           ".hero-role",
           {opacity: 1, y: 0, duration: 0.6, ease: "power3.out"},
@@ -3641,9 +4166,7 @@
         },
       });
 
-      /* ═══════════════════════════════════════════════
-         PRELOADER
-         ═══════════════════════════════════════════════ */
+      /* PRELOADER */
       (function () {
         const bar = document.getElementById("preloader-bar");
         const pct = document.getElementById("preloader-pct");
@@ -3682,6 +4205,118 @@
         if (img.complete) img.classList.add("loaded");
         else img.addEventListener("load", () => img.classList.add("loaded"));
       });
+    </script>
+    <script>
+      (function () {
+        const MAINTENANCE_ADDON = 30000;
+        const WHATSAPP_BASE = "https://wa.me/792624342?text=";
+
+        const cards = document.querySelectorAll(".price-card");
+        const toggleOnetime = document.getElementById("toggleOnetime");
+        const toggleMaintenance = document.getElementById("toggleMaintenance");
+        const togglePill = document.getElementById("togglePill");
+        let maintenanceOn = false;
+
+        function formatKsh(n) {
+          return n.toLocaleString("en-US");
+        }
+
+        function positionPill(target) {
+          const shell = target.parentElement;
+          const shellRect = shell.getBoundingClientRect();
+          const rect = target.getBoundingClientRect();
+          togglePill.style.width = rect.width + "px";
+          togglePill.style.transform =
+            "translateX(" + (rect.left - shellRect.left - 6) + "px)";
+        }
+
+        function setToggle(isMaintenance) {
+          maintenanceOn = isMaintenance;
+          toggleOnetime.classList.toggle("active", !isMaintenance);
+          toggleMaintenance.classList.toggle("active", isMaintenance);
+          positionPill(isMaintenance ? toggleMaintenance : toggleOnetime);
+          updatePrices();
+          updateWhatsAppLinks();
+        }
+
+        function updatePrices() {
+          cards.forEach((card) => {
+            const base = parseInt(card.dataset.base, 10);
+            const amountEl = card.querySelector("[data-amount]");
+            const noteEl = card.querySelector("[data-note]");
+            const newTotal = maintenanceOn ? base + MAINTENANCE_ADDON : base;
+            const newNote = maintenanceOn
+              ? "Includes 6 months maintenance"
+              : "One‑time payment";
+
+            amountEl.classList.add("swapping");
+            noteEl.classList.add("swapping");
+            setTimeout(() => {
+              amountEl.textContent = formatKsh(newTotal);
+              noteEl.textContent = newNote;
+              amountEl.classList.remove("swapping");
+              noteEl.classList.remove("swapping");
+            }, 180);
+          });
+        }
+
+        function updateWhatsAppLinks() {
+          cards.forEach((card) => {
+            const base = parseInt(card.dataset.base, 10);
+            const name = card.dataset.name;
+            const total = maintenanceOn ? base + MAINTENANCE_ADDON : base;
+            const planLabel = maintenanceOn
+              ? "package, KSh " +
+                formatKsh(total) +
+                ", including 6 month maintenance,"
+              : "package, KSh " + formatKsh(total) + ",";
+            const link = card.querySelector("[data-whatsapp-link]");
+            const msg =
+              "Hi Allan, I'm interested in the " +
+              name +
+              " " +
+              planLabel +
+              " for my business. Could we discuss details?";
+            link.href = WHATSAPP_BASE + encodeURIComponent(msg);
+          });
+        }
+
+        toggleOnetime.addEventListener("click", () => setToggle(false));
+        toggleMaintenance.addEventListener("click", () => setToggle(true));
+
+        window.addEventListener("load", () => {
+          positionPill(toggleOnetime);
+          updateWhatsAppLinks();
+        });
+
+        window.addEventListener("resize", () => {
+          positionPill(maintenanceOn ? toggleMaintenance : toggleOnetime);
+        });
+
+        const prefersReducedMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+
+        if (prefersReducedMotion) {
+          cards.forEach((c) => c.classList.add("in-view"));
+        } else {
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  const idx = Array.from(cards).indexOf(entry.target);
+                  setTimeout(() => {
+                    entry.target.classList.add("in-view");
+                  }, idx * 140);
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            {threshold: 0.2, rootMargin: "0px 0px -40px 0px"},
+          );
+          cards.forEach((card) => observer.observe(card));
+        }
+      })();
     </script>
   </body>
 </html>
