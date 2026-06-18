@@ -1640,7 +1640,7 @@
       }
 
       /* ═══════════════════════════════════════════════
-         PROCESS SECTION — replaces Experience
+         PROCESS SECTION — Master Timeline & 3D Tilt
          ═══════════════════════════════════════════════ */
       #process {
         padding: 140px 0;
@@ -1665,6 +1665,7 @@
         height: 100%;
         pointer-events: none;
         overflow: visible;
+        z-index: 1;
       }
       .process-zz-item {
         display: grid;
@@ -1672,14 +1673,8 @@
         align-items: start;
         margin-bottom: 0;
         opacity: 0;
-        transform: translateY(30px);
-        transition:
-          opacity 0.6s ease,
-          transform 0.6s ease;
-      }
-      .process-zz-item.visible {
-        opacity: 1;
-        transform: translateY(0);
+        position: relative;
+        z-index: 2;
       }
       @media (max-width: 768px) {
         .process-zz-item {
@@ -1687,6 +1682,9 @@
         }
         .process-zz-item .process-zz-spacer,
         .process-zz-item .process-zz-node {
+          display: none;
+        }
+        #process-zz-svg {
           display: none;
         }
       }
@@ -1705,39 +1703,23 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        will-change: transform;
+        transform-style: preserve-3d;
+        perspective: 800px;
       }
-      .process-zz-card.glow {
-        border-color: var(--process-color, var(--lime));
-        box-shadow:
-          0 0 35px
-            color-mix(
-              in srgb,
-              var(--process-color, var(--lime)) 18%,
-              transparent
-            ),
-          0 20px 50px rgba(0, 0, 0, 0.45);
-        transform: translateY(-4px);
-      }
-      .process-zz-card::before {
+      .process-zz-card::after {
         content: "";
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 3px;
+        inset: 0;
+        border-radius: 20px;
         background: linear-gradient(
-          90deg,
-          transparent,
-          var(--process-color, var(--lime)),
-          transparent
+          135deg,
+          rgba(255, 255, 255, 0.03) 0%,
+          transparent 50%,
+          rgba(255, 255, 255, 0.01) 100%
         );
-        opacity: 0;
-        transition: opacity 0.4s;
+        pointer-events: none;
       }
-      .process-zz-card.glow::before {
-        opacity: 1;
-      }
-      /* Large, thick process name */
       .process-name {
         font-family: var(--font-display);
         font-size: clamp(2.2rem, 4vw, 3.6rem);
@@ -1747,7 +1729,8 @@
         color: var(--process-color, var(--lime));
         text-shadow: 0 0 40px
           color-mix(in srgb, var(--process-color, var(--lime)) 20%, transparent);
-        margin-bottom: 6px;
+        margin-bottom: 4px;
+        transform: translateZ(20px);
       }
       .process-step-num {
         font-family: var(--font-mono);
@@ -1755,8 +1738,9 @@
         color: var(--muted);
         letter-spacing: 0.15em;
         text-transform: uppercase;
-        opacity: 0.5;
+        opacity: 0.6;
         margin-bottom: 2px;
+        transform: translateZ(15px);
       }
       .process-desc {
         font-size: 13px;
@@ -1764,6 +1748,7 @@
         line-height: 1.6;
         max-width: 90%;
         margin-top: 2px;
+        transform: translateZ(10px);
       }
 
       .process-zz-node {
@@ -1784,17 +1769,183 @@
           transform 0.4s;
         position: relative;
         z-index: 2;
+        box-shadow: 0 0 0 0
+          color-mix(in srgb, var(--process-color, var(--lime)) 0%, transparent);
+        will-change: transform, box-shadow;
       }
-      .process-zz-dot.lit {
+
+      /* ═══════════════════════════════════════════════
+         FAQ SECTION — Premium Accordion
+         ═══════════════════════════════════════════════ */
+      #faq {
+        padding: 120px 0;
+        background: var(--deep);
+      }
+      .faq-title {
+        font-family: var(--font-display);
+        font-size: clamp(2.2rem, 4vw, 3.8rem);
+        font-weight: 900;
+        letter-spacing: -0.03em;
+        margin-bottom: 60px;
+      }
+      .faq-list {
+        max-width: 820px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .faq-item {
+        background: rgba(10, 22, 40, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 18px;
+        overflow: hidden;
+        transition:
+          border-color 0.4s ease,
+          box-shadow 0.4s ease;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        cursor: pointer;
+      }
+      .faq-item:hover {
+        border-color: rgba(132, 204, 22, 0.25);
+      }
+      .faq-item[open] {
+        border-color: rgba(132, 204, 22, 0.35);
         box-shadow:
-          0 0 0 4px
-            color-mix(
-              in srgb,
-              var(--process-color, var(--lime)) 18%,
-              transparent
-            ),
-          0 0 18px var(--process-color, var(--lime));
-        transform: scale(1.4);
+          0 0 50px rgba(132, 204, 22, 0.06),
+          0 20px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .faq-item summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 22px 28px;
+        font-family: var(--font-display);
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--text);
+        letter-spacing: -0.01em;
+        list-style: none;
+        cursor: pointer;
+        user-select: none;
+        position: relative;
+        transition: color 0.3s ease;
+        gap: 16px;
+      }
+      .faq-item summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .faq-item summary .faq-icon-wrap {
+        flex-shrink: 0;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: rgba(132, 204, 22, 0.08);
+        border: 1px solid rgba(132, 204, 22, 0.15);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        color: var(--lime);
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        flex-shrink: 0;
+      }
+      .faq-item:hover summary .faq-icon-wrap {
+        background: rgba(132, 204, 22, 0.15);
+        border-color: rgba(132, 204, 22, 0.35);
+      }
+      .faq-item[open] summary .faq-icon-wrap {
+        background: rgba(132, 204, 22, 0.2);
+        border-color: var(--lime);
+        transform: rotate(180deg);
+        box-shadow: 0 0 20px rgba(132, 204, 22, 0.15);
+      }
+
+      .faq-item summary .faq-question {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .faq-item summary .faq-q-mark {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--lime);
+        opacity: 0.5;
+        font-weight: 400;
+        letter-spacing: 0.05em;
+        flex-shrink: 0;
+      }
+
+      .faq-item .faq-answer {
+        padding: 0 28px 28px 28px;
+        color: var(--muted);
+        font-size: 0.98rem;
+        line-height: 1.8;
+        max-width: 90%;
+      }
+      .faq-item .faq-answer p {
+        margin: 0;
+        padding: 6px 0 0 0;
+        position: relative;
+      }
+      .faq-item .faq-answer p::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 32px;
+        height: 2px;
+        background: linear-gradient(90deg, var(--lime), transparent);
+        border-radius: 2px;
+      }
+
+      /* Glow accent line inside open state */
+      .faq-item[open] summary::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 28px;
+        right: 28px;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(132, 204, 22, 0.2),
+          transparent
+        );
+      }
+
+      @media (max-width: 600px) {
+        .faq-item summary {
+          padding: 18px 20px;
+          font-size: 0.95rem;
+        }
+        .faq-item .faq-answer {
+          padding: 0 20px 22px 20px;
+          font-size: 0.9rem;
+          max-width: 100%;
+        }
+        .faq-item summary .faq-q-mark {
+          display: none;
+        }
+        .faq-item summary .faq-icon-wrap {
+          width: 30px;
+          height: 30px;
+          font-size: 12px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .faq-item {
+          transition: none !important;
+        }
+        .faq-item summary .faq-icon-wrap {
+          transition: none !important;
+        }
       }
 
       #testimonials {
@@ -2852,6 +3003,7 @@
         <li><a href="#skills">Stack</a></li>
         <li><a href="#projects">Work</a></li>
         <li><a href="#process">Process</a></li>
+        <li><a href="#faq">FAQ</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="#pricing">Pricing</a></li>
       </ul>
@@ -2918,6 +3070,14 @@
             ><span class="link-icon"
               ><i class="fa-solid fa-arrow-right-arrow-left"></i></span
             ><span class="link-text">Process</span
+            ><span class="link-arrow">→</span></a
+          >
+        </li>
+        <li>
+          <a href="#faq"
+            ><span class="link-icon"
+              ><i class="fa-regular fa-circle-question"></i></span
+            ><span class="link-text">FAQ</span
             ><span class="link-arrow">→</span></a
           >
         </li>
@@ -3187,9 +3347,7 @@
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════
-         PROCESS SECTION — replaces Experience
-         ═══════════════════════════════════════════════ -->
+    <!-- PROCESS SECTION -->
     <section id="process">
       <div class="section-inner">
         <div class="section-label reveal">How We Work</div>
@@ -3197,6 +3355,150 @@
         <div class="process-zz-wrap" id="process-zz-wrap">
           <svg id="process-zz-svg" aria-hidden="true"></svg>
           <div id="process-zz-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         FAQ SECTION — Premium Accordion
+         ═══════════════════════════════════════════════ -->
+    <section id="faq">
+      <div class="section-inner">
+        <div class="section-label reveal">Common Questions</div>
+        <h2 class="faq-title reveal">Frequently Asked Questions</h2>
+        <div class="faq-list">
+          <details class="faq-item reveal">
+            <summary>
+              <span class="faq-question">
+                <span class="faq-q-mark">Q.</span>
+                How long does it take to build a website?
+              </span>
+              <span class="faq-icon-wrap"
+                ><i class="fa-solid fa-chevron-down"></i
+              ></span>
+            </summary>
+            <div class="faq-answer">
+              <p>
+                Most projects are live within 2 weeks of kickoff. Complex
+                e‑commerce platforms may take 3–4 weeks, but I always deliver on
+                the timeline we agree on.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item reveal">
+            <summary>
+              <span class="faq-question">
+                <span class="faq-q-mark">Q.</span>
+                What's included in the price?
+              </span>
+              <span class="faq-icon-wrap"
+                ><i class="fa-solid fa-chevron-down"></i
+              ></span>
+            </summary>
+            <div class="faq-answer">
+              <p>
+                Custom design, basic SEO setup, copywriting, and hosting &amp;
+                domain setup — no hidden add-ons. You get a fully functional,
+                production‑ready website.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item reveal">
+            <summary>
+              <span class="faq-question">
+                <span class="faq-q-mark">Q.</span>
+                Are there ongoing costs after the build?
+              </span>
+              <span class="faq-icon-wrap"
+                ><i class="fa-solid fa-chevron-down"></i
+              ></span>
+            </summary>
+            <div class="faq-answer">
+              <p>
+                Just hosting and domain renewal, which I'll help you set up
+                affordably. Hosting typically costs between KSh 2,000 – 5,000
+                per year depending on your provider.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item reveal">
+            <summary>
+              <span class="faq-question">
+                <span class="faq-q-mark">Q.</span>
+                What if I need changes after launch?
+              </span>
+              <span class="faq-icon-wrap"
+                ><i class="fa-solid fa-chevron-down"></i
+              ></span>
+            </summary>
+            <div class="faq-answer">
+              <p>
+                Free revisions every 3 months after launch, plus real
+                performance data so you can see what's working. I'm committed to
+                your long‑term success.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item reveal">
+            <summary>
+              <span class="faq-question">
+                <span class="faq-q-mark">Q.</span>
+                Do you only work with certain industries?
+              </span>
+              <span class="faq-icon-wrap"
+                ><i class="fa-solid fa-chevron-down"></i
+              ></span>
+            </summary>
+            <div class="faq-answer">
+              <p>
+                I work mainly with service businesses — law firms, contractors,
+                HVAC and roofing companies, travel agencies — but the process
+                works for any business that needs more inquiries from its
+                website.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item reveal">
+            <summary>
+              <span class="faq-question">
+                <span class="faq-q-mark">Q.</span>
+                Do I need technical skills to work with you?
+              </span>
+              <span class="faq-icon-wrap"
+                ><i class="fa-solid fa-chevron-down"></i
+              ></span>
+            </summary>
+            <div class="faq-answer">
+              <p>
+                Not at all. I guide you through every step in plain language.
+                You focus on your business; I handle all the technical
+                complexity.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item reveal">
+            <summary>
+              <span class="faq-question">
+                <span class="faq-q-mark">Q.</span>
+                What happens if something breaks after launch?
+              </span>
+              <span class="faq-icon-wrap"
+                ><i class="fa-solid fa-chevron-down"></i
+              ></span>
+            </summary>
+            <div class="faq-answer">
+              <p>
+                I'm just a message away. I provide ongoing support to ensure
+                your site stays healthy, secure, and performing at its best.
+              </p>
+            </div>
+          </details>
         </div>
       </div>
     </section>
@@ -3673,6 +3975,23 @@
               </svg>
               Process
             </a>
+            <a href="#faq" class="ft-link">
+              <svg
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1.5"
+                width="14"
+                height="14"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z"
+                />
+              </svg>
+              FAQ
+            </a>
             <a href="#contact" class="ft-link">
               <svg
                 fill="none"
@@ -3848,45 +4167,36 @@
         },
       ];
 
-      /* ═══════════════════════════════════════════════
-         PROCESS DATA — replaces experience
-         ═══════════════════════════════════════════════ */
+      /* PROCESS DATA */
       const processSteps = [
         {
           name: "Discovery",
           color: "#84cc16",
-          icon: "fa-regular fa-compass",
           desc: "We align on your vision, goals, and audience. I dig deep to understand your business, competitors, and what success looks like.",
         },
         {
           name: "Strategy",
           color: "#3b82f6",
-          icon: "fa-regular fa-map",
           desc: "I map out the technical architecture, user flows, and technology stack. Every decision is made with scalability in mind.",
         },
         {
           name: "Design",
           color: "#f59e0b",
-          icon: "fa-regular fa-pen-to-square",
           desc: "Pixel-perfect UI/UX design that balances beauty with function. I craft interfaces that users love and convert.",
         },
         {
           name: "Development",
-
           color: "#8b5cf6",
-          icon: "fa-regular fa-code",
           desc: "Clean, maintainable code is shipped daily. I build with the MERN stack — fast, secure, and production-ready.",
         },
         {
           name: "Launch",
           color: "#ec4899",
-          icon: "fa-regular fa-rocket",
           desc: "Deployment, testing, and a smooth go-live. I handle DNS, hosting setup, SSL, and make sure everything runs perfectly.",
         },
         {
           name: "Support",
           color: "#14b8a6",
-          icon: "fa-regular fa-headset",
           desc: "Post-launch care: bug fixes, updates, and guidance. I'm here to ensure your product stays healthy and grows with you.",
         },
       ];
@@ -4183,28 +4493,27 @@
         autoPlay();
       })();
 
-      /* ═══════════════════════════════════════════════
-         PROCESS ZIGZAG — renders process steps
-         ═══════════════════════════════════════════════ */
+      /* PROCESS ZIGZAG — MASTER TIMELINE + 3D TILT */
       (function () {
         const list = document.getElementById("process-zz-list");
+        const svg = document.getElementById("process-zz-svg");
+        const wrap = document.getElementById("process-zz-wrap");
         if (!list) return;
+
         list.innerHTML = processSteps
           .map((step, i) => {
             const even = i % 2 === 0;
             const card = `<div class="process-zz-card" style="--process-color:${step.color}" data-card="${i}">
-            <div style="position:absolute;top:0;right:0;width:70px;height:70px;border-radius:50%;background:radial-gradient(circle,${step.color}12,transparent 70%);pointer-events:none"></div>
-            <div class="process-step-num" style="color:${step.color}">${String(i + 1).padStart(2, "0")} / ${String(processSteps.length).padStart(2, "0")}</div>
-            <div class="process-name" style="--process-color:${step.color}">${step.name}</div>
-            <div class="process-desc">${step.desc}</div>
-          </div>`;
+              <div style="position:absolute;top:0;right:0;width:70px;height:70px;border-radius:50%;background:radial-gradient(circle,${step.color}12,transparent 70%);pointer-events:none"></div>
+              <div class="process-step-num" style="color:${step.color}">${String(i + 1).padStart(2, "0")} / ${String(processSteps.length).padStart(2, "0")}</div>
+              <div class="process-name" style="--process-color:${step.color}">${step.name}</div>
+              <div class="process-desc">${step.desc}</div>
+            </div>`;
             const node = `<div class="process-zz-node"><div class="process-zz-dot" style="--process-color:${step.color}" data-dot="${i}"></div></div>`;
             const spacer = `<div class="process-zz-spacer"></div>`;
             return `<div class="process-zz-item" data-index="${i}" style="margin-bottom:40px">${even ? card + node + spacer : spacer + node + card}</div>`;
           })
           .join("");
-
-        const svg = document.getElementById("process-zz-svg");
 
         function drawLines() {
           const dots = list.querySelectorAll("[data-dot]");
@@ -4212,7 +4521,6 @@
             svg.innerHTML = "";
             return;
           }
-          const wrap = document.getElementById("process-zz-wrap");
           const wRect = wrap.getBoundingClientRect();
           let paths = "";
           for (let i = 0; i < dots.length - 1; i++) {
@@ -4224,45 +4532,189 @@
             const by = b.top - wRect.top + b.height / 2 + window.scrollY;
             const midY = (ay + by) / 2;
             const col = processSteps[i].color;
-            paths += `<path id="proczzpath-${i}" d="M${ax},${ay} C${ax},${midY} ${bx},${midY} ${bx},${by}" stroke="${col}" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="1000" stroke-dashoffset="1000" opacity="0.5"/>`;
+            paths += `<path id="proczzpath-${i}" d="M${ax},${ay} C${ax},${midY} ${bx},${midY} ${bx},${by}" stroke="${col}" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="1000" stroke-dashoffset="1000" opacity="0.6"/>`;
           }
           svg.innerHTML = paths;
+
+          document.querySelectorAll("#process-zz-svg path").forEach((path) => {
+            const len = path.getTotalLength();
+            path.style.strokeDasharray = len;
+            path.style.strokeDashoffset = len;
+            path.dataset.length = len;
+          });
         }
 
-        function animatePaths() {
-          list.querySelectorAll("[data-dot]").forEach((dotEl, i) => {
-            const rect = dotEl.getBoundingClientRect();
-            if (rect.top < window.innerHeight * 0.85) {
-              dotEl.classList.add("lit");
-              const card = list.querySelector(`[data-card="${i}"]`);
-              if (card) card.classList.add("glow");
+        function initMasterTimeline() {
+          const items = list.querySelectorAll(".process-zz-item");
+          const totalItems = items.length;
+
+          ScrollTrigger.getAll().forEach((st) => {
+            if (st.trigger === wrap || st.trigger === list) st.kill();
+          });
+
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: wrap,
+              start: "top 80%",
+              end: "bottom 20%",
+              scrub: 1.5,
+              invalidateOnRefresh: true,
+            },
+            defaults: {ease: "power3.out"},
+          });
+
+          items.forEach((item, i) => {
+            const card = item.querySelector(".process-zz-card");
+            const dot = item.querySelector(".process-zz-dot");
+            const stepNum = item.querySelector(".process-step-num");
+            const nameEl = item.querySelector(".process-name");
+            const descEl = item.querySelector(".process-desc");
+            const color = card.style.getPropertyValue("--process-color").trim();
+            const startTime = i * 1.4;
+            const dur = 0.9;
+
+            tl.set(item, {opacity: 1}, startTime);
+
+            tl.fromTo(
+              dot,
+              {scale: 0.3, opacity: 0, boxShadow: "0 0 0 0 rgba(0,0,0,0)"},
+              {
+                scale: 1.8,
+                opacity: 1,
+                boxShadow: `0 0 20px ${color}66, 0 0 60px ${color}33`,
+                duration: dur * 0.6,
+                ease: "back.out(2.5)",
+              },
+              startTime,
+            ).to(
+              dot,
+              {
+                scale: 1,
+                boxShadow: `0 0 12px ${color}44, 0 0 30px ${color}22`,
+                duration: dur * 0.4,
+                ease: "power2.inOut",
+              },
+              startTime + dur * 0.6,
+            );
+
+            tl.to(
+              card,
+              {
+                borderColor: color,
+                boxShadow: `0 0 40px ${color}33, 0 20px 60px rgba(0,0,0,0.5)`,
+                duration: dur * 0.5,
+                ease: "power2.out",
+              },
+              startTime + 0.1,
+            );
+
+            tl.fromTo(
+              stepNum,
+              {y: 20, opacity: 0},
+              {
+                y: 0,
+                opacity: 1,
+                duration: dur * 0.5,
+                ease: "power2.out",
+              },
+              startTime + 0.15,
+            );
+
+            tl.fromTo(
+              nameEl,
+              {y: 40, opacity: 0, clipPath: "inset(0 0 100% 0)"},
+              {
+                y: 0,
+                opacity: 1,
+                clipPath: "inset(0 0 0% 0)",
+                duration: dur * 0.8,
+                ease: "power4.out",
+              },
+              startTime + 0.2,
+            );
+
+            tl.fromTo(
+              descEl,
+              {y: 20, opacity: 0},
+              {
+                y: 0,
+                opacity: 1,
+                duration: dur * 0.5,
+                ease: "power3.out",
+              },
+              startTime + 0.5,
+            );
+
+            if (i < totalItems - 1) {
               const path = document.getElementById(`proczzpath-${i}`);
-              if (path && path.getAttribute("data-anim") !== "1") {
-                path.setAttribute("data-anim", "1");
-                const len = 600;
+              if (path) {
+                const len = parseFloat(path.dataset.length) || 600;
                 path.style.strokeDasharray = len;
                 path.style.strokeDashoffset = len;
-                path.style.transition =
-                  "stroke-dashoffset 0.9s cubic-bezier(0.22,1,0.36,1)";
-                requestAnimationFrame(() => {
-                  path.style.strokeDashoffset = "0";
-                });
+                tl.to(
+                  path,
+                  {
+                    strokeDashoffset: 0,
+                    duration: dur * 0.8,
+                    ease: "power2.inOut",
+                  },
+                  startTime + 0.4,
+                );
               }
             }
           });
-          list.querySelectorAll(".process-zz-item").forEach((item) => {
-            if (item.getBoundingClientRect().top < window.innerHeight * 0.88)
-              item.classList.add("visible");
+
+          return tl;
+        }
+
+        function initTiltEffect() {
+          const cards = list.querySelectorAll(".process-zz-card");
+          const isTouch = window.matchMedia("(pointer: coarse)").matches;
+          if (isTouch) return;
+
+          cards.forEach((card) => {
+            card.addEventListener("mousemove", (e) => {
+              const rect = card.getBoundingClientRect();
+              const x = (e.clientX - rect.left) / rect.width - 0.5;
+              const y = (e.clientY - rect.top) / rect.height - 0.5;
+              card.style.transform = `perspective(800px) rotateY(${x * 6}deg) rotateX(${-y * 6}deg) translateY(-4px)`;
+              card.style.transition = "transform 0.1s ease-out";
+            });
+
+            card.addEventListener("mouseleave", () => {
+              card.style.transform =
+                "perspective(800px) rotateY(0deg) rotateX(0deg) translateY(0px)";
+              card.style.transition =
+                "transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)";
+            });
           });
         }
 
-        setTimeout(drawLines, 300);
-        window.addEventListener("resize", () => {
+        const prefersReducedMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+
+        if (prefersReducedMotion) {
+          list
+            .querySelectorAll(".process-zz-item")
+            .forEach((el) => (el.style.opacity = "1"));
+          return;
+        }
+
+        setTimeout(() => {
           drawLines();
-          animatePaths();
+          initTiltEffect();
+          initMasterTimeline();
+        }, 100);
+
+        let resizeTimer;
+        window.addEventListener("resize", () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(() => {
+            drawLines();
+            ScrollTrigger.getAll().forEach((st) => st.refresh());
+          }, 250);
         });
-        window.addEventListener("scroll", animatePaths);
-        animatePaths();
       })();
 
       /* SALES CHART */
@@ -4698,6 +5150,68 @@
               }
             }
           }
+        });
+      })();
+
+      /* ═══════════════════════════════════════════════
+         FAQ — Smooth accordion + staggered reveal
+         ═══════════════════════════════════════════════ */
+      (function () {
+        const faqItems = document.querySelectorAll(".faq-item");
+
+        // Staggered reveal with GSAP
+        faqItems.forEach((item, i) => {
+          gsap.fromTo(
+            item,
+            {opacity: 0, y: 30},
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.7,
+              delay: i * 0.12,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: item,
+                start: "top 88%",
+                toggleActions: "play none none none",
+              },
+            },
+          );
+        });
+
+        // Smooth open/close with height animation
+        faqItems.forEach((item) => {
+          const summary = item.querySelector("summary");
+          const answer = item.querySelector(".faq-answer");
+          const icon = summary.querySelector(".faq-icon-wrap");
+
+          // Store original answer height for animation
+          summary.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            const isOpen = item.open;
+
+            // Close all other items
+            faqItems.forEach((other) => {
+              if (other !== item && other.open) {
+                other.open = false;
+              }
+            });
+
+            // Toggle this item
+            if (isOpen) {
+              item.open = false;
+            } else {
+              item.open = true;
+            }
+          });
+        });
+
+        // Prevent closing when clicking inside answer
+        document.querySelectorAll(".faq-answer").forEach((el) => {
+          el.addEventListener("click", (e) => {
+            e.stopPropagation();
+          });
         });
       })();
     </script>
