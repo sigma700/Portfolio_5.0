@@ -237,6 +237,9 @@
         transform: scaleX(0);
       }
 
+      /* ═══════════════════════════════════════════════
+         NAV — with hamburger support
+         ═══════════════════════════════════════════════ */
       nav {
         position: fixed;
         top: 20px;
@@ -308,12 +311,320 @@
         transform: scale(1.05);
         box-shadow: 0 0 20px rgba(132, 204, 22, 0.4);
       }
+
+      /* ─── Hamburger Button ─── */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        z-index: 9991;
+        position: relative;
+        width: 30px;
+        height: 24px;
+      }
+      .hamburger span {
+        display: block;
+        height: 2px;
+        width: 100%;
+        background: var(--text);
+        border-radius: 2px;
+        transition: all 0.35s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        transform-origin: center;
+      }
+      .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+        background: var(--lime);
+      }
+      .hamburger.active span:nth-child(2) {
+        opacity: 0;
+        transform: scaleX(0);
+      }
+      .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+        background: var(--lime);
+      }
+
       @media (max-width: 768px) {
         .nav-links,
         .nav-cta {
           display: none;
         }
+        .hamburger {
+          display: flex;
+        }
       }
+
+      /* ═══════════════════════════════════════════════
+         MOBILE SIDE MENU — glassmorphic, sliding
+         ═══════════════════════════════════════════════ */
+      .mobile-menu-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 9992;
+        background: rgba(2, 4, 8, 0.6);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s ease;
+      }
+      .mobile-menu-overlay.open {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .mobile-menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 9993;
+        width: 300px;
+        max-width: 80vw;
+        height: 100vh;
+        background: rgba(6, 13, 27, 0.95);
+        backdrop-filter: blur(24px) saturate(180%);
+        -webkit-backdrop-filter: blur(24px) saturate(180%);
+        border-left: 1px solid rgba(132, 204, 22, 0.15);
+        box-shadow:
+          -20px 0 60px rgba(0, 0, 0, 0.7),
+          0 0 80px rgba(132, 204, 22, 0.04);
+        transform: translateX(110%);
+        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        padding: 32px 28px 40px;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+      }
+      .mobile-menu.open {
+        transform: translateX(0);
+      }
+
+      .mobile-menu-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 48px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .mobile-menu-brand {
+        font-family: var(--font-display);
+        font-size: 16px;
+        font-weight: 900;
+        letter-spacing: 0.08em;
+        color: var(--lime);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .mobile-menu-brand .brand-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--lime);
+        box-shadow: 0 0 16px rgba(132, 204, 22, 0.5);
+        display: inline-block;
+      }
+      .mobile-menu-close {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        color: var(--muted);
+        font-size: 18px;
+        transition: all 0.3s ease;
+        font-family: var(--font-body);
+        line-height: 1;
+      }
+      .mobile-menu-close:hover {
+        border-color: var(--lime);
+        color: var(--lime);
+        background: rgba(132, 204, 22, 0.08);
+        transform: rotate(90deg);
+      }
+
+      .mobile-menu-links {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        flex: 1;
+        padding: 0;
+        margin: 0;
+      }
+      .mobile-menu-links li {
+        opacity: 0;
+        transform: translateX(20px);
+      }
+      .mobile-menu-links li a {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 14px 18px;
+        border-radius: 14px;
+        font-family: var(--font-body);
+        font-size: 15px;
+        font-weight: 500;
+        color: var(--muted);
+        text-decoration: none;
+        letter-spacing: 0.04em;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      .mobile-menu-links li a::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 14px;
+        background: rgba(132, 204, 22, 0.06);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .mobile-menu-links li a:hover::before {
+        opacity: 1;
+      }
+      .mobile-menu-links li a:hover {
+        color: var(--text);
+        transform: translateX(4px);
+      }
+      .mobile-menu-links li a .link-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        background: rgba(132, 204, 22, 0.08);
+        border: 1px solid rgba(132, 204, 22, 0.12);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        color: var(--lime);
+        flex-shrink: 0;
+        transition: all 0.3s ease;
+      }
+      .mobile-menu-links li a:hover .link-icon {
+        background: rgba(132, 204, 22, 0.16);
+        border-color: rgba(132, 204, 22, 0.3);
+        transform: scale(1.05);
+      }
+      .mobile-menu-links li a .link-text {
+        flex: 1;
+      }
+      .mobile-menu-links li a .link-arrow {
+        opacity: 0;
+        transform: translateX(-8px);
+        transition: all 0.3s ease;
+        color: var(--lime);
+        font-size: 14px;
+      }
+      .mobile-menu-links li a:hover .link-arrow {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .mobile-menu-links li a.active-link {
+        color: var(--lime);
+        background: rgba(132, 204, 22, 0.08);
+      }
+      .mobile-menu-links li a.active-link .link-icon {
+        background: rgba(132, 204, 22, 0.18);
+        border-color: rgba(132, 204, 22, 0.35);
+      }
+
+      .mobile-menu-footer {
+        margin-top: 32px;
+        padding-top: 24px;
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
+      }
+      .mobile-menu-cta {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        padding: 16px;
+        border-radius: 14px;
+        background: var(--lime);
+        color: var(--void);
+        font-family: var(--font-body);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      .mobile-menu-cta::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateX(-100%) skewX(-20deg);
+        transition: transform 0.4s;
+      }
+      .mobile-menu-cta:hover::before {
+        transform: translateX(150%) skewX(-20deg);
+      }
+      .mobile-menu-cta:hover {
+        box-shadow: 0 0 40px rgba(132, 204, 22, 0.35);
+        transform: translateY(-2px);
+      }
+
+      .mobile-menu-glow {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 120px;
+        background: radial-gradient(
+          ellipse at bottom center,
+          rgba(132, 204, 22, 0.06) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
+
+      .mobile-menu::-webkit-scrollbar {
+        width: 3px;
+      }
+      .mobile-menu::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .mobile-menu::-webkit-scrollbar-thumb {
+        background: rgba(132, 204, 22, 0.3);
+        border-radius: 10px;
+      }
+
+      @media (max-width: 480px) {
+        .mobile-menu {
+          width: 280px;
+          padding: 24px 20px 32px;
+        }
+        .mobile-menu-links li a {
+          padding: 12px 14px;
+          font-size: 14px;
+        }
+        .mobile-menu-links li a .link-icon {
+          width: 28px;
+          height: 28px;
+          font-size: 11px;
+        }
+      }
+
+      body.menu-open {
+        overflow: hidden;
+      }
+
+      /* ─── Rest of existing styles ─── */
 
       #hero {
         position: relative;
@@ -1328,22 +1639,25 @@
         gap: 11px;
       }
 
-      #experience {
+      /* ═══════════════════════════════════════════════
+         PROCESS SECTION — replaces Experience
+         ═══════════════════════════════════════════════ */
+      #process {
         padding: 140px 0;
         background: var(--void);
         overflow: hidden;
       }
-      .exp-title {
+      .process-title {
         font-family: var(--font-display);
         font-size: clamp(2.2rem, 4vw, 3.8rem);
         font-weight: 900;
         letter-spacing: -0.03em;
         margin-bottom: 80px;
       }
-      .exp-zz-wrap {
+      .process-zz-wrap {
         position: relative;
       }
-      #exp-zz-svg {
+      #process-zz-svg {
         position: absolute;
         top: 0;
         left: 0;
@@ -1352,7 +1666,7 @@
         pointer-events: none;
         overflow: visible;
       }
-      .exp-zz-item {
+      .process-zz-item {
         display: grid;
         grid-template-columns: 1fr 80px 1fr;
         align-items: start;
@@ -1363,21 +1677,21 @@
           opacity 0.6s ease,
           transform 0.6s ease;
       }
-      .exp-zz-item.visible {
+      .process-zz-item.visible {
         opacity: 1;
         transform: translateY(0);
       }
       @media (max-width: 768px) {
-        .exp-zz-item {
+        .process-zz-item {
           grid-template-columns: 1fr;
         }
-        .exp-zz-item .exp-zz-spacer,
-        .exp-zz-item .exp-zz-node {
+        .process-zz-item .process-zz-spacer,
+        .process-zz-item .process-zz-node {
           display: none;
         }
       }
-      .exp-zz-card {
-        padding: 28px;
+      .process-zz-card {
+        padding: 40px 32px;
         border-radius: 20px;
         border: 1px solid rgba(255, 255, 255, 0.07);
         background: rgba(10, 22, 40, 0.85);
@@ -1387,45 +1701,82 @@
           border-color 0.4s,
           box-shadow 0.4s,
           transform 0.4s;
+        min-height: 180px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       }
-      .exp-zz-card.glow {
-        border-color: var(--exp-color, var(--lime));
+      .process-zz-card.glow {
+        border-color: var(--process-color, var(--lime));
         box-shadow:
           0 0 35px
-            color-mix(in srgb, var(--exp-color, var(--lime)) 18%, transparent),
+            color-mix(
+              in srgb,
+              var(--process-color, var(--lime)) 18%,
+              transparent
+            ),
           0 20px 50px rgba(0, 0, 0, 0.45);
         transform: translateY(-4px);
       }
-      .exp-zz-card::before {
+      .process-zz-card::before {
         content: "";
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
-        height: 2px;
+        height: 3px;
         background: linear-gradient(
           90deg,
           transparent,
-          var(--exp-color, var(--lime)),
+          var(--process-color, var(--lime)),
           transparent
         );
         opacity: 0;
         transition: opacity 0.4s;
       }
-      .exp-zz-card.glow::before {
+      .process-zz-card.glow::before {
         opacity: 1;
       }
-      .exp-zz-node {
+      /* Large, thick process name */
+      .process-name {
+        font-family: var(--font-display);
+        font-size: clamp(2.2rem, 4vw, 3.6rem);
+        font-weight: 900;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+        color: var(--process-color, var(--lime));
+        text-shadow: 0 0 40px
+          color-mix(in srgb, var(--process-color, var(--lime)) 20%, transparent);
+        margin-bottom: 6px;
+      }
+      .process-step-num {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--muted);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        opacity: 0.5;
+        margin-bottom: 2px;
+      }
+      .process-desc {
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.6;
+        max-width: 90%;
+        margin-top: 2px;
+      }
+
+      .process-zz-node {
         display: flex;
         flex-direction: column;
         align-items: center;
         padding-top: 36px;
       }
-      .exp-zz-dot {
+      .process-zz-dot {
         width: 14px;
         height: 14px;
         border-radius: 50%;
-        border: 2px solid var(--exp-color, var(--lime));
+        border: 2px solid var(--process-color, var(--lime));
         background: var(--void);
         flex-shrink: 0;
         transition:
@@ -1434,51 +1785,16 @@
         position: relative;
         z-index: 2;
       }
-      .exp-zz-dot.lit {
+      .process-zz-dot.lit {
         box-shadow:
           0 0 0 4px
-            color-mix(in srgb, var(--exp-color, var(--lime)) 18%, transparent),
-          0 0 18px var(--exp-color, var(--lime));
+            color-mix(
+              in srgb,
+              var(--process-color, var(--lime)) 18%,
+              transparent
+            ),
+          0 0 18px var(--process-color, var(--lime));
         transform: scale(1.4);
-      }
-      .exp-period {
-        font-family: var(--font-mono);
-        font-size: 10px;
-        color: var(--lime);
-        letter-spacing: 0.2em;
-        margin-bottom: 10px;
-      }
-      .exp-role {
-        font-family: var(--font-display);
-        font-size: 1.25rem;
-        font-weight: 700;
-        letter-spacing: -0.02em;
-        margin-bottom: 4px;
-      }
-      .exp-company {
-        font-size: 13px;
-        color: var(--muted);
-        margin-bottom: 14px;
-      }
-      .exp-desc {
-        font-size: 13px;
-        color: var(--muted);
-        line-height: 1.7;
-        margin-bottom: 18px;
-      }
-      .exp-highlights {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-      .exp-highlight {
-        font-family: var(--font-mono);
-        font-size: 10px;
-        color: var(--muted);
-        padding: 4px 12px;
-        border-radius: 100px;
-        border: 1px solid rgba(255, 255, 255, 0.07);
-        background: var(--surface);
       }
 
       #testimonials {
@@ -2535,7 +2851,7 @@
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Stack</a></li>
         <li><a href="#projects">Work</a></li>
-        <li><a href="#experience">XP</a></li>
+        <li><a href="#process">Process</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="#pricing">Pricing</a></li>
       </ul>
@@ -2545,7 +2861,93 @@
         class="nav-cta"
         >HIRE ME</a
       >
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </nav>
+
+    <!-- MOBILE SIDE MENU -->
+    <div class="mobile-menu-overlay" id="menuOverlay"></div>
+    <div
+      class="mobile-menu"
+      id="mobileMenu"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Navigation menu"
+    >
+      <div class="mobile-menu-glow"></div>
+      <div class="mobile-menu-header">
+        <div class="mobile-menu-brand">
+          <span class="brand-dot"></span>
+          ALLAN.DEV
+        </div>
+        <button
+          class="mobile-menu-close"
+          id="menuClose"
+          aria-label="Close menu"
+        >
+          ✕
+        </button>
+      </div>
+      <ul class="mobile-menu-links" id="mobileMenuLinks">
+        <li>
+          <a href="#about"
+            ><span class="link-icon"><i class="fa-regular fa-user"></i></span
+            ><span class="link-text">About</span
+            ><span class="link-arrow">→</span></a
+          >
+        </li>
+        <li>
+          <a href="#skills"
+            ><span class="link-icon"><i class="fa-solid fa-code"></i></span
+            ><span class="link-text">Stack</span
+            ><span class="link-arrow">→</span></a
+          >
+        </li>
+        <li>
+          <a href="#projects"
+            ><span class="link-icon"><i class="fa-regular fa-folder"></i></span
+            ><span class="link-text">Work</span
+            ><span class="link-arrow">→</span></a
+          >
+        </li>
+        <li>
+          <a href="#process"
+            ><span class="link-icon"
+              ><i class="fa-solid fa-arrow-right-arrow-left"></i></span
+            ><span class="link-text">Process</span
+            ><span class="link-arrow">→</span></a
+          >
+        </li>
+        <li>
+          <a href="#pricing"
+            ><span class="link-icon"
+              ><i class="fa-regular fa-credit-card"></i></span
+            ><span class="link-text">Pricing</span
+            ><span class="link-arrow">→</span></a
+          >
+        </li>
+        <li>
+          <a href="#contact"
+            ><span class="link-icon"
+              ><i class="fa-regular fa-envelope"></i></span
+            ><span class="link-text">Contact</span
+            ><span class="link-arrow">→</span></a
+          >
+        </li>
+      </ul>
+      <div class="mobile-menu-footer">
+        <a
+          href="https://wa.me/792624342?text=Hello%20I'm%20interested%20in%20your%20services"
+          target="_blank"
+          class="mobile-menu-cta"
+        >
+          <i class="fa-brands fa-whatsapp"></i> Hire Me
+        </a>
+      </div>
+    </div>
 
     <!-- HERO -->
     <section id="hero">
@@ -2640,7 +3042,6 @@
               <span class="creds-kicker-count">02 / 02 EARNED</span>
             </div>
 
-            <!-- Card 1: GoMyCode -->
             <div class="cred-card" data-tilt>
               <div class="cred-card-top">
                 <div class="cred-issuer-block">
@@ -2656,7 +3057,6 @@
                   ><i class="fa-solid fa-circle-check"></i>Verified</span
                 >
               </div>
-
               <div class="cred-frame">
                 <img
                   src="Gomycode_Web_dev.png"
@@ -2668,11 +3068,9 @@
                 />
                 <div class="cred-frame-shine"></div>
               </div>
-
               <div class="cred-title">
                 Software Development Bootcamp with AI Skills
               </div>
-
               <div class="cred-meta-row">
                 <div class="cred-meta-item">
                   <span class="cred-meta-label">Completed</span>
@@ -2683,7 +3081,6 @@
                   <span class="cred-meta-value">11-1940-2</span>
                 </div>
               </div>
-
               <div class="cred-skills">
                 <span class="cred-skill">Full-Stack Dev</span>
                 <span class="cred-skill">AI Integration</span>
@@ -2691,7 +3088,6 @@
               </div>
             </div>
 
-            <!-- Card 2: Moringa School -->
             <div class="cred-card" data-tilt>
               <div class="cred-card-top">
                 <div class="cred-issuer-block">
@@ -2707,7 +3103,6 @@
                   ><i class="fa-solid fa-circle-check"></i>Verified</span
                 >
               </div>
-
               <div class="cred-frame">
                 <img
                   src="moring_AI.png"
@@ -2719,9 +3114,7 @@
                 />
                 <div class="cred-frame-shine"></div>
               </div>
-
               <div class="cred-title">AI Essentials for Professionals</div>
-
               <div class="cred-meta-row">
                 <div class="cred-meta-item">
                   <span class="cred-meta-label">Completed</span>
@@ -2732,7 +3125,6 @@
                   <span class="cred-meta-value">Moringa School</span>
                 </div>
               </div>
-
               <div class="cred-skills">
                 <span class="cred-skill">Applied AI</span>
                 <span class="cred-skill">Prompt Engineering</span>
@@ -2795,14 +3187,16 @@
       </div>
     </section>
 
-    <!-- EXPERIENCE -->
-    <section id="experience">
+    <!-- ═══════════════════════════════════════════════
+         PROCESS SECTION — replaces Experience
+         ═══════════════════════════════════════════════ -->
+    <section id="process">
       <div class="section-inner">
-        <div class="section-label reveal">Journey</div>
-        <h2 class="exp-title reveal">Experience</h2>
-        <div class="exp-zz-wrap" id="exp-zz-wrap">
-          <svg id="exp-zz-svg" aria-hidden="true"></svg>
-          <div id="exp-zz-list"></div>
+        <div class="section-label reveal">How We Work</div>
+        <h2 class="process-title reveal">Development Process</h2>
+        <div class="process-zz-wrap" id="process-zz-wrap">
+          <svg id="process-zz-svg" aria-hidden="true"></svg>
+          <div id="process-zz-list"></div>
         </div>
       </div>
     </section>
@@ -2876,18 +3270,14 @@
         </div>
 
         <div class="pricing-grid">
-          <!-- STARTER -->
-          <!-- data-base updated to 25000 -->
           <div class="price-card" data-base="25000" data-name="Starter">
             <div class="tier-name">Starter</div>
             <p class="tier-desc">A focused launchpad for a new business.</p>
-
             <div class="price-row">
               <span class="price-currency">KSh</span>
               <span class="price-amount" data-amount>25,000</span>
             </div>
             <div class="price-note" data-note>One‑time payment</div>
-
             <ul class="feature-list">
               <li>
                 <span class="feature-check"
@@ -2914,7 +3304,6 @@
                 Basic on‑page SEO
               </li>
             </ul>
-
             <a
               class="cta-btn"
               data-whatsapp-link
@@ -2925,8 +3314,6 @@
             </a>
           </div>
 
-          <!-- BUSINESS -->
-          <!-- data-base updated to 50000 -->
           <div
             class="price-card featured"
             data-base="50000"
@@ -2937,13 +3324,11 @@
             <p class="tier-desc">
               For growing businesses that need more reach.
             </p>
-
             <div class="price-row">
               <span class="price-currency">KSh</span>
               <span class="price-amount" data-amount>50,000</span>
             </div>
             <div class="price-note" data-note>One‑time payment</div>
-
             <ul class="feature-list">
               <li>
                 <span class="feature-check"
@@ -2970,7 +3355,6 @@
                 Full technical SEO setup
               </li>
             </ul>
-
             <a
               class="cta-btn primary"
               data-whatsapp-link
@@ -2981,18 +3365,14 @@
             </a>
           </div>
 
-          <!-- E-COMMERCE -->
-          <!-- data-base updated to 80000 -->
           <div class="price-card" data-base="80000" data-name="E-commerce">
             <div class="tier-name">E‑commerce</div>
             <p class="tier-desc">A complete online store, ready to sell.</p>
-
             <div class="price-row">
               <span class="price-currency">KSh</span>
               <span class="price-amount" data-amount>80,000</span>
             </div>
             <div class="price-note" data-note>One‑time payment</div>
-
             <ul class="feature-list">
               <li>
                 <span class="feature-check"
@@ -3019,7 +3399,6 @@
                 Order and customer dashboard
               </li>
             </ul>
-
             <a
               class="cta-btn"
               data-whatsapp-link
@@ -3157,7 +3536,6 @@
               </div>
               <div class="form-group">
                 <label class="form-label">Budget Range</label>
-                <!-- Budget dropdown aligned with new pricing tiers -->
                 <select class="form-select form-input">
                   <option value="">Select budget...</option>
                   <option>Under KSh 50,000</option>
@@ -3277,6 +3655,23 @@
                 />
               </svg>
               Stack
+            </a>
+            <a href="#process" class="ft-link">
+              <svg
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="1.5"
+                width="14"
+                height="14"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"
+                />
+              </svg>
+              Process
             </a>
             <a href="#contact" class="ft-link">
               <svg
@@ -3453,58 +3848,46 @@
         },
       ];
 
-      const experiences = [
+      /* ═══════════════════════════════════════════════
+         PROCESS DATA — replaces experience
+         ═══════════════════════════════════════════════ */
+      const processSteps = [
         {
-          role: "CEO & Lead Engineer",
-          company: "SigmaDevs Web Development Co. Ltd",
-          period: "July 2025 to Present",
+          name: "Discovery",
           color: "#84cc16",
-          desc: "Founded and lead a web development firm delivering MERN-stack solutions for businesses across Kenya.",
-          highlights: [
-            "Shipped full-stack apps from scratch",
-            "Kenya Schools API sold to multiple clients",
-            "Protiba: AI-powered timetable SaaS",
-            "Free webinars on web development",
-          ],
+          icon: "fa-regular fa-compass",
+          desc: "We align on your vision, goals, and audience. I dig deep to understand your business, competitors, and what success looks like.",
         },
         {
-          role: "Software Engineering Intern",
-          company: "Future Interns",
-          period: "2-Month Internship",
+          name: "Strategy",
           color: "#3b82f6",
-          desc: "Immersive internship focused on agile workflows and collaborative product delivery.",
-          highlights: [
-            "Production codebase contributions",
-            "Sprint-based delivery",
-            "RESTful API integrations",
-            "Mentorship from senior engineers",
-          ],
+          icon: "fa-regular fa-map",
+          desc: "I map out the technical architecture, user flows, and technology stack. Every decision is made with scalability in mind.",
         },
         {
-          role: "Lead Developer",
-          company: "Macista Limited Kenya",
-          period: "Jul 2025 to Sep 2025",
+          name: "Design",
           color: "#f59e0b",
-          desc: "Coordinated, designed, and delivered the full company website using the MERN stack.",
-          highlights: [
-            "30% sales increase via modern UI",
-            "JWT + bcrypt.js security layer",
-            "Delivered on schedule",
-            "SEO implementation",
-          ],
+          icon: "fa-regular fa-pen-to-square",
+          desc: "Pixel-perfect UI/UX design that balances beauty with function. I craft interfaces that users love and convert.",
         },
         {
-          role: "Freelance Full-Stack Developer",
-          company: "BrewHaven USA",
-          period: "Oct 2025 to Nov 2025",
+          name: "Development",
+
           color: "#8b5cf6",
-          desc: "Developed a full e-commerce platform for a US-based coffee business.",
-          highlights: [
-            "10%+ profit increase post-launch",
-            "Payment gateway integration",
-            "AI-powered FAQ system",
-            "Fully responsive UI",
-          ],
+          icon: "fa-regular fa-code",
+          desc: "Clean, maintainable code is shipped daily. I build with the MERN stack — fast, secure, and production-ready.",
+        },
+        {
+          name: "Launch",
+          color: "#ec4899",
+          icon: "fa-regular fa-rocket",
+          desc: "Deployment, testing, and a smooth go-live. I handle DNS, hosting setup, SSL, and make sure everything runs perfectly.",
+        },
+        {
+          name: "Support",
+          color: "#14b8a6",
+          icon: "fa-regular fa-headset",
+          desc: "Post-launch care: bug fixes, updates, and guidance. I'm here to ensure your product stays healthy and grows with you.",
         },
       ];
 
@@ -3676,7 +4059,7 @@
         scrollProg.style.transform = `scaleX(${window.scrollY / (document.body.scrollHeight - window.innerHeight)})`;
       });
 
-      /* CREDENTIAL CARDS — mouse-responsive tilt + glow */
+      /* CREDENTIAL CARDS — tilt effect */
       (function () {
         const prefersReducedMotion = window.matchMedia(
           "(prefers-reduced-motion: reduce)",
@@ -3800,28 +4183,28 @@
         autoPlay();
       })();
 
-      /* EXPERIENCE ZIGZAG */
+      /* ═══════════════════════════════════════════════
+         PROCESS ZIGZAG — renders process steps
+         ═══════════════════════════════════════════════ */
       (function () {
-        const list = document.getElementById("exp-zz-list");
+        const list = document.getElementById("process-zz-list");
         if (!list) return;
-        list.innerHTML = experiences
-          .map((e, i) => {
+        list.innerHTML = processSteps
+          .map((step, i) => {
             const even = i % 2 === 0;
-            const card = `<div class="exp-zz-card" style="--exp-color:${e.color}" data-card="${i}">
-            <div style="position:absolute;top:0;right:0;width:70px;height:70px;border-radius:50%;background:radial-gradient(circle,${e.color}12,transparent 70%);pointer-events:none"></div>
-            <div class="exp-period">${e.period}</div>
-            <div class="exp-role">${e.role}</div>
-            <div class="exp-company" style="color:${e.color}">${e.company}</div>
-            <div class="exp-desc">${e.desc}</div>
-            <div class="exp-highlights">${e.highlights.map((h) => `<span class="exp-highlight">${h}</span>`).join("")}</div>
+            const card = `<div class="process-zz-card" style="--process-color:${step.color}" data-card="${i}">
+            <div style="position:absolute;top:0;right:0;width:70px;height:70px;border-radius:50%;background:radial-gradient(circle,${step.color}12,transparent 70%);pointer-events:none"></div>
+            <div class="process-step-num" style="color:${step.color}">${String(i + 1).padStart(2, "0")} / ${String(processSteps.length).padStart(2, "0")}</div>
+            <div class="process-name" style="--process-color:${step.color}">${step.name}</div>
+            <div class="process-desc">${step.desc}</div>
           </div>`;
-            const node = `<div class="exp-zz-node"><div class="exp-zz-dot" style="--exp-color:${e.color}" data-dot="${i}"></div></div>`;
-            const spacer = `<div class="exp-zz-spacer"></div>`;
-            return `<div class="exp-zz-item" data-index="${i}" style="margin-bottom:40px">${even ? card + node + spacer : spacer + node + card}</div>`;
+            const node = `<div class="process-zz-node"><div class="process-zz-dot" style="--process-color:${step.color}" data-dot="${i}"></div></div>`;
+            const spacer = `<div class="process-zz-spacer"></div>`;
+            return `<div class="process-zz-item" data-index="${i}" style="margin-bottom:40px">${even ? card + node + spacer : spacer + node + card}</div>`;
           })
           .join("");
 
-        const svg = document.getElementById("exp-zz-svg");
+        const svg = document.getElementById("process-zz-svg");
 
         function drawLines() {
           const dots = list.querySelectorAll("[data-dot]");
@@ -3829,7 +4212,7 @@
             svg.innerHTML = "";
             return;
           }
-          const wrap = document.getElementById("exp-zz-wrap");
+          const wrap = document.getElementById("process-zz-wrap");
           const wRect = wrap.getBoundingClientRect();
           let paths = "";
           for (let i = 0; i < dots.length - 1; i++) {
@@ -3840,8 +4223,8 @@
             const bx = b.left - wRect.left + b.width / 2;
             const by = b.top - wRect.top + b.height / 2 + window.scrollY;
             const midY = (ay + by) / 2;
-            const col = experiences[i].color;
-            paths += `<path id="zzpath-${i}" d="M${ax},${ay} C${ax},${midY} ${bx},${midY} ${bx},${by}" stroke="${col}" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="1000" stroke-dashoffset="1000" opacity="0.5"/>`;
+            const col = processSteps[i].color;
+            paths += `<path id="proczzpath-${i}" d="M${ax},${ay} C${ax},${midY} ${bx},${midY} ${bx},${by}" stroke="${col}" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="1000" stroke-dashoffset="1000" opacity="0.5"/>`;
           }
           svg.innerHTML = paths;
         }
@@ -3853,7 +4236,7 @@
               dotEl.classList.add("lit");
               const card = list.querySelector(`[data-card="${i}"]`);
               if (card) card.classList.add("glow");
-              const path = document.getElementById(`zzpath-${i}`);
+              const path = document.getElementById(`proczzpath-${i}`);
               if (path && path.getAttribute("data-anim") !== "1") {
                 path.setAttribute("data-anim", "1");
                 const len = 600;
@@ -3867,7 +4250,7 @@
               }
             }
           });
-          list.querySelectorAll(".exp-zz-item").forEach((item) => {
+          list.querySelectorAll(".process-zz-item").forEach((item) => {
             if (item.getBoundingClientRect().top < window.innerHeight * 0.88)
               item.classList.add("visible");
           });
@@ -4208,10 +4591,119 @@
         if (img.complete) img.classList.add("loaded");
         else img.addEventListener("load", () => img.classList.add("loaded"));
       });
+
+      /* MOBILE MENU */
+      (function () {
+        const hamburger = document.getElementById("hamburger");
+        const menu = document.getElementById("mobileMenu");
+        const overlay = document.getElementById("menuOverlay");
+        const closeBtn = document.getElementById("menuClose");
+        const links = document.querySelectorAll(".mobile-menu-links li");
+        let isOpen = false;
+        let animationRunning = false;
+
+        function openMenu() {
+          if (animationRunning || isOpen) return;
+          animationRunning = true;
+          isOpen = true;
+          document.body.classList.add("menu-open");
+          hamburger.classList.add("active");
+          overlay.classList.add("open");
+          menu.classList.add("open");
+          gsap.fromTo(
+            links,
+            {opacity: 0, x: 30},
+            {
+              opacity: 1,
+              x: 0,
+              duration: 0.5,
+              ease: "power3.out",
+              stagger: 0.07,
+              delay: 0.15,
+              onComplete: () => {
+                animationRunning = false;
+              },
+            },
+          );
+        }
+
+        function closeMenu() {
+          if (animationRunning || !isOpen) return;
+          animationRunning = true;
+          gsap.to(links, {
+            opacity: 0,
+            x: 30,
+            duration: 0.25,
+            ease: "power2.in",
+            stagger: 0.03,
+            onComplete: () => {
+              overlay.classList.remove("open");
+              menu.classList.remove("open");
+              hamburger.classList.remove("active");
+              document.body.classList.remove("menu-open");
+              isOpen = false;
+              animationRunning = false;
+            },
+          });
+        }
+
+        hamburger.addEventListener("click", () => {
+          if (isOpen) closeMenu();
+          else openMenu();
+        });
+
+        closeBtn.addEventListener("click", closeMenu);
+        overlay.addEventListener("click", closeMenu);
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape" && isOpen) closeMenu();
+        });
+
+        links.forEach((li) => {
+          const a = li.querySelector("a");
+          if (a) {
+            a.addEventListener("click", (e) => {
+              e.preventDefault();
+              const href = a.getAttribute("href");
+              closeMenu();
+              setTimeout(() => {
+                const target = document.querySelector(href);
+                if (target) target.scrollIntoView({behavior: "smooth"});
+              }, 350);
+            });
+          }
+        });
+
+        window.addEventListener("resize", () => {
+          if (window.innerWidth > 768 && isOpen) closeMenu();
+        });
+
+        const focusableElements = menu.querySelectorAll(
+          'a, button, [tabindex]:not([tabindex="-1"])',
+        );
+        const firstFocusable = focusableElements[0];
+        const lastFocusable = focusableElements[focusableElements.length - 1];
+
+        menu.addEventListener("keydown", (e) => {
+          if (e.key === "Tab") {
+            if (e.shiftKey) {
+              if (document.activeElement === firstFocusable) {
+                e.preventDefault();
+                lastFocusable.focus();
+              }
+            } else {
+              if (document.activeElement === lastFocusable) {
+                e.preventDefault();
+                firstFocusable.focus();
+              }
+            }
+          }
+        });
+      })();
     </script>
     <script>
       (function () {
-        const MAINTENANCE_ADDON = 10000;
+        const MAINTENANCE_ADDON = 30000;
         const WHATSAPP_BASE = "https://wa.me/792624342?text=";
 
         const cards = document.querySelectorAll(".price-card");
