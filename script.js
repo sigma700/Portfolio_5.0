@@ -18,14 +18,14 @@ const projects = [
     link: "https://regal-scone-d475d1.netlify.app/",
     desc: "Professional website for a HVAC company based in Kenya",
   },
-  {
-    title: "LAK Advocates",
-    image:
-      "https://res.cloudinary.com/dnadawobi/image/upload/v1782217742/Screenshot_2026-06-17_104818_hgtqtp.png",
-    tags: ["NEXT Js", "TailWindCss", "FRAMER-MOTION"],
-    link: "https://lak-eta.vercel.app/",
-    desc: "Professional website for a law firm",
-  },
+  // {
+  //   title: "LAK Advocates",
+  //   image:
+  //     "https://res.cloudinary.com/dnadawobi/image/upload/v1782217742/Screenshot_2026-06-17_104818_hgtqtp.png",
+  //   tags: ["NEXT Js", "TailWindCss", "FRAMER-MOTION"],
+  //   link: "https://lak-eta.vercel.app/",
+  //   desc: "Professional website for a law firm",
+  // },
   {
     title: "Mindful Living KE",
     image:
@@ -65,14 +65,6 @@ const projects = [
     tags: ["React", "Node.js", "MongoDB", "Framer Motion"],
     link: "https://protiba.onrender.com/",
     desc: "AI-powered school timetable generator SaaS",
-  },
-  {
-    title: "EduFind",
-    image:
-      "https://res.cloudinary.com/dnadawobi/image/upload/v1780574607/edu_find_e66r6r.png",
-    tags: ["React", "Node.js", "Express"],
-    link: "https://edufind-ryn2.onrender.com/",
-    desc: "Educational institution discovery platform",
   },
 ];
 
