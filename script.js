@@ -5,7 +5,7 @@ const projects = [
   {
     title: "Al-Ahsan Motors",
     image:
-      "https://res.cloudinary.com/dnadawobi/image/upload/v1783433809/Screenshot_2026-07-07_171243_mlowd7.jpg",
+      "https://res.cloudinary.com/dnadawobi/image/upload/v1783969940/Screenshot_2026-07-13_221146_ipqbwh.png",
     tags: ["Next js", "Framer-Motion"],
     link: "https://al-ahsan-ke.vercel.app/",
     desc: "Car dealership website",
