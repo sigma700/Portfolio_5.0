@@ -61,7 +61,7 @@ const projects = [
   {
     title: "Protiba",
     image:
-      "https://res.cloudinary.com/dnadawobi/image/upload/v1780574605/Screenshot_2025-09-20_203806_k3zhms.png",
+      "https://res.cloudinary.com/dnadawobi/image/upload/v1785107834/Screenshot_2026-07-27_021620_qf5o2i.png",
     tags: ["React", "Node.js", "MongoDB", "Framer Motion"],
     link: "https://protiba.onrender.com/",
     desc: "AI-powered school timetable generator SaaS",
