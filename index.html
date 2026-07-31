@@ -137,6 +137,328 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+
+    <style>
+      /* ── ADDED STYLES FOR SERVICES SNIPPET ── */
+      #services-snippet {
+        padding: 100px 0;
+        background: var(--void);
+        border-top: 1px solid rgba(255, 255, 255, 0.04);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      }
+      .services-snippet-header {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+      .services-snippet-title {
+        font-family: var(--font-display);
+        font-size: clamp(2.2rem, 4vw, 3.8rem);
+        font-weight: 900;
+        letter-spacing: -0.03em;
+      }
+      .services-snippet-title em {
+        font-style: normal;
+        color: var(--lime);
+      }
+      .services-snippet-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+        margin-bottom: 50px;
+      }
+      @media (max-width: 768px) {
+        .services-snippet-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 480px) {
+        .services-snippet-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .service-snippet-card {
+        background: rgba(10, 22, 40, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 20px;
+        padding: 32px 24px;
+        text-align: center;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        backdrop-filter: blur(4px);
+        cursor: pointer;
+      }
+      .service-snippet-card:hover {
+        border-color: rgba(132, 204, 22, 0.3);
+        transform: translateY(-8px);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        background: rgba(10, 22, 40, 0.8);
+      }
+      .service-snippet-icon {
+        width: 64px;
+        height: 64px;
+        margin: 0 auto 16px;
+        background: rgba(132, 204, 22, 0.08);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 28px;
+        color: var(--lime);
+        transition: all 0.3s;
+      }
+      .service-snippet-card:hover .service-snippet-icon {
+        background: rgba(132, 204, 22, 0.16);
+        box-shadow: 0 0 30px rgba(132, 204, 22, 0.15);
+        transform: scale(1.05);
+      }
+      .service-snippet-name {
+        font-family: var(--font-display);
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 8px;
+      }
+      .service-snippet-desc {
+        font-size: 0.9rem;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+      .services-snippet-cta {
+        text-align: center;
+      }
+
+      /* ── 2-COLUMN PROJECTS GRID — LARGER CARDS ── */
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+      }
+
+      @media (max-width: 768px) {
+        .projects-grid {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+      }
+
+      .project-card {
+        border-radius: 24px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        background: rgba(10, 22, 40, 0.8);
+        position: relative;
+        transition:
+          transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+          border-color 0.4s,
+          box-shadow 0.5s;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .project-card:hover {
+        transform: translateY(-12px) scale(1.015);
+        border-color: rgba(132, 204, 22, 0.35);
+        box-shadow:
+          0 40px 80px rgba(0, 0, 0, 0.55),
+          0 0 0 1px rgba(132, 204, 22, 0.1),
+          0 0 50px rgba(132, 204, 22, 0.07);
+      }
+
+      .project-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        z-index: 2;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(132, 204, 22, 0),
+          transparent
+        );
+        transition: background 0.4s;
+      }
+
+      .project-card:hover::before {
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--lime),
+          transparent
+        );
+      }
+
+      .project-img-wrap {
+        position: relative;
+        overflow: hidden;
+        height: 260px;
+        flex-shrink: 0;
+      }
+
+      @media (max-width: 768px) {
+        .project-img-wrap {
+          height: 200px;
+        }
+      }
+
+      .project-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: brightness(0.82) saturate(0.85) blur(8px);
+        transition:
+          filter 0.5s,
+          transform 0.6s ease;
+      }
+
+      .project-img.loaded {
+        filter: blur(0px) brightness(0.82) saturate(0.85);
+      }
+
+      .project-card:hover .project-img {
+        filter: brightness(1) saturate(1.1);
+        transform: scale(1.07);
+      }
+
+      .project-img-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to bottom,
+          transparent 35%,
+          rgba(10, 22, 40, 0.97)
+        );
+        pointer-events: none;
+      }
+
+      .project-hover-icon {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s;
+        pointer-events: none;
+      }
+
+      .project-card:hover .project-hover-icon {
+        opacity: 1;
+      }
+
+      .project-hover-btn {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 2px solid rgba(132, 204, 22, 0.7);
+        background: rgba(0, 0, 0, 0.45);
+        backdrop-filter: blur(8px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 22px;
+        color: var(--lime);
+        transform: scale(0.7);
+        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .project-card:hover .project-hover-btn {
+        transform: scale(1);
+      }
+
+      .project-shimmer {
+        position: absolute;
+        top: 0;
+        left: -80%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.055),
+          transparent
+        );
+        transform: skewX(-20deg);
+        transition: left 0.7s ease;
+        pointer-events: none;
+      }
+
+      .project-card:hover .project-shimmer {
+        left: 140%;
+      }
+
+      .project-content {
+        padding: 28px 30px 30px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 14px;
+      }
+
+      .project-tag {
+        font-family: var(--font-mono);
+        font-size: 10px;
+        letter-spacing: 0.12em;
+        color: rgba(132, 204, 22, 0.7);
+        padding: 4px 12px;
+        border-radius: 100px;
+        border: 1px solid rgba(132, 204, 22, 0.15);
+        background: rgba(132, 204, 22, 0.04);
+      }
+
+      .project-name {
+        font-family: var(--font-display);
+        font-size: 1.3rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        margin-bottom: 10px;
+        color: #fff;
+      }
+
+      .project-desc {
+        font-size: 0.95rem;
+        color: var(--muted);
+        line-height: 1.7;
+        margin-bottom: 20px;
+        flex-grow: 1;
+      }
+
+      .project-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--lime);
+        letter-spacing: 0.06em;
+        text-decoration: none;
+        transition: gap 0.2s;
+        align-self: flex-start;
+        padding: 10px 0;
+      }
+
+      .project-link:hover {
+        gap: 12px;
+      }
+
+      /* remove default link styles from clickable card */
+      .project-card a {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        height: 100%;
+      }
+    </style>
   </head>
 
   <body>
@@ -160,8 +482,6 @@
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="services.html">Services</a></li>
-
-        <li><a href="#skills">Stack</a></li>
         <li><a href="#projects">Work</a></li>
         <li><a href="#process">Process</a></li>
         <li><a href="#faq">FAQ</a></li>
@@ -462,24 +782,60 @@
       </div>
     </section>
 
-    <!-- SKILLS -->
-    <section id="skills">
-      <div class="section-inner skills-header">
-        <div class="section-label reveal">Arsenal</div>
-        <div class="skills-title reveal">Tech Stack</div>
-      </div>
-      <div id="skills-slider-wrap">
-        <div id="skills-slides"></div>
-        <div class="skills-nav">
-          <div class="skills-dots" id="skills-dots"></div>
-          <div class="skills-arrows">
-            <button class="skills-arrow" id="skills-prev" aria-label="Previous">
-              &#8592;
-            </button>
-            <button class="skills-arrow" id="skills-next" aria-label="Next">
-              &#8594;
-            </button>
+    <!-- ══════════════════════════════════════════ -->
+    <!-- NEW: SERVICES SNIPPET                     -->
+    <!-- ══════════════════════════════════════════ -->
+    <section id="services-snippet">
+      <div class="section-inner">
+        <div class="services-snippet-header reveal">
+          <div class="section-label">Expertise</div>
+          <h2 class="services-snippet-title">My <em>Services</em></h2>
+        </div>
+        <div class="services-snippet-grid">
+          <div class="service-snippet-card reveal">
+            <div class="service-snippet-icon">
+              <i class="fa-solid fa-globe"></i>
+            </div>
+            <h3 class="service-snippet-name">Business Websites</h3>
+            <p class="service-snippet-desc">
+              Professional, responsive websites designed to convert visitors
+              into customers.
+            </p>
           </div>
+          <div class="service-snippet-card reveal">
+            <div class="service-snippet-icon">
+              <i class="fa-solid fa-rocket"></i>
+            </div>
+            <h3 class="service-snippet-name">Landing Pages</h3>
+            <p class="service-snippet-desc">
+              High-converting pages built for campaigns, product launches, and
+              lead generation.
+            </p>
+          </div>
+          <div class="service-snippet-card reveal">
+            <div class="service-snippet-icon">
+              <i class="fa-solid fa-pen-ruler"></i>
+            </div>
+            <h3 class="service-snippet-name">UI/UX Design</h3>
+            <p class="service-snippet-desc">
+              Intuitive interfaces that prioritize user satisfaction and brand
+              identity.
+            </p>
+          </div>
+          <div class="service-snippet-card reveal">
+            <div class="service-snippet-icon">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </div>
+            <h3 class="service-snippet-name">E-commerce</h3>
+            <p class="service-snippet-desc">
+              Secure, scalable online stores with seamless payment experiences.
+            </p>
+          </div>
+        </div>
+        <div class="services-snippet-cta reveal">
+          <a href="services.html" class="btn-primary">
+            Explore All Services <span>&#8594;</span>
+          </a>
         </div>
       </div>
     </section>

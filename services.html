@@ -9,25 +9,6 @@
       content="Premium full-stack web development, UI/UX design, AI solutions, and custom web applications. MERN stack expert serving Kenya and worldwide."
     />
     <meta name="theme-color" content="#84cc16" />
-    <link rel="canonical" href="https://allanmuriithi.dev/services" />
-
-    <meta
-      property="og:title"
-      content="Services | Allan Muriithi — Premium Digital Solutions"
-    />
-    <meta
-      property="og:description"
-      content="Premium full-stack web development, UI/UX design, AI solutions, and custom web applications."
-    />
-    <meta property="og:url" content="https://allanmuriithi.dev/services" />
-    <meta
-      property="og:image"
-      content="https://allanmuriithi.dev/og-cover.jpg"
-    />
-    <meta name="twitter:card" content="summary_large_image" />
-
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -39,16 +20,17 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
     <style>
       :root {
         --lime: #84cc16;
+        --lime-dim: rgba(132, 204, 22, 0.12);
         --green: #22c55e;
         --void: #020408;
         --deep: #060d1b;
+        --panel: #0a1628;
         --surface: rgba(255, 255, 255, 0.03);
         --border: rgba(132, 204, 22, 0.12);
         --text: #e5e7eb;
@@ -65,11 +47,9 @@
         padding: 0;
         box-sizing: border-box;
       }
-
       html {
         scroll-behavior: smooth;
       }
-
       body {
         background: var(--void);
         color: var(--text);
@@ -77,7 +57,7 @@
         overflow-x: hidden;
       }
 
-      /* ═════════════════════ NOISE OVERLAY ═════════════════════ */
+      /* ── NOISE ── */
       .noise-overlay {
         position: fixed;
         inset: 0;
@@ -87,7 +67,6 @@
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
         background-size: 128px;
       }
-
       #scroll-prog {
         position: fixed;
         top: 0;
@@ -100,7 +79,7 @@
         transform: scaleX(0);
       }
 
-      /* ═════════════════════ NAV ═════════════════════ */
+      /* ── NAV ── */
       nav {
         position: fixed;
         top: 20px;
@@ -221,7 +200,7 @@
         }
       }
 
-      /* ═════════════════════ MOBILE MENU ═════════════════════ */
+      /* ── MOBILE MENU ── */
       .mobile-menu-overlay {
         position: fixed;
         inset: 0;
@@ -309,8 +288,6 @@
         flex-direction: column;
         gap: 6px;
         flex: 1;
-        padding: 0;
-        margin: 0;
       }
       .mobile-menu-links li a {
         display: flex;
@@ -324,7 +301,6 @@
         text-decoration: none;
         letter-spacing: 0.04em;
         transition: all 0.3s ease;
-        position: relative;
       }
       .mobile-menu-links li a:hover {
         color: var(--text);
@@ -386,10 +362,9 @@
         overflow: hidden;
       }
 
-      /* ═════════════════════ SECTION BASICS ═════════════════════ */
-      section {
-        position: relative;
-      }
+      /* ══════════════════════════════════════════════
+         SECTION FUNDAMENTALS
+      ══════════════════════════════════════════════ */
       .section-inner {
         max-width: 1200px;
         margin: 0 auto;
@@ -405,7 +380,7 @@
         color: var(--lime);
         letter-spacing: 0.35em;
         text-transform: uppercase;
-        margin-bottom: 24px;
+        margin-bottom: 20px;
       }
       .section-label::before {
         content: "";
@@ -421,119 +396,26 @@
         transform: translateY(40px);
       }
 
-      /* ═════════════════════ BUTTONS ═════════════════════ */
-      .btn-primary {
-        padding: 15px 32px;
-        background: var(--lime);
-        color: var(--void);
-        font-weight: 700;
-        font-size: 14px;
-        letter-spacing: 0.06em;
-        border-radius: 100px;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        transition: all 0.3s;
-        position: relative;
-        overflow: hidden;
-        border: none;
-        cursor: pointer;
-      }
-      .btn-primary::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: rgba(255, 255, 255, 0.2);
-        transform: translateX(-100%) skewX(-20deg);
-        transition: transform 0.4s;
-      }
-      .btn-primary:hover::before {
-        transform: translateX(150%) skewX(-20deg);
-      }
-      .btn-primary:hover {
-        box-shadow: 0 0 40px rgba(132, 204, 22, 0.4);
-        transform: translateY(-2px);
-      }
-      .btn-secondary {
-        padding: 15px 32px;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        color: var(--text);
-        font-weight: 600;
-        font-size: 14px;
-        letter-spacing: 0.06em;
-        border-radius: 100px;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        transition: all 0.3s;
-        background: rgba(255, 255, 255, 0.03);
-        cursor: pointer;
-      }
-      .btn-secondary:hover {
-        border-color: var(--lime);
-        color: var(--lime);
-        background: rgba(132, 204, 22, 0.05);
-      }
-
-      /* ═════════════════════ STATS STRIP (TOP) ═════════════════════ */
-      #stats-strip-top {
-        padding: 100px 0 40px 0;
-        background: var(--void);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-      }
-      #stats-strip-top .stats-strip-grid {
-        display: grid;
-        grid-template-columns: repeat(6, 1fr);
-        gap: 20px;
-        text-align: center;
-      }
-      @media (max-width: 900px) {
-        #stats-strip-top .stats-strip-grid {
-          grid-template-columns: repeat(3, 1fr);
-          gap: 24px;
-        }
-      }
-      @media (max-width: 480px) {
-        #stats-strip-top .stats-strip-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-      #stats-strip-top .stats-strip-item {
-        padding: 16px 10px;
-      }
-      #stats-strip-top .stats-strip-number {
-        font-family: var(--font-display);
-        font-size: clamp(1.8rem, 2.8vw, 2.6rem);
-        font-weight: 900;
-        color: var(--lime);
-        line-height: 1;
-      }
-      #stats-strip-top .stats-strip-label {
-        font-family: var(--font-mono);
-        font-size: 9px;
-        color: var(--muted);
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        margin-top: 8px;
-      }
-
-      /* ═════════════════════ SERVICES GRID (TOP) ═════════════════════ */
+      /* ══════════════════════════════════════════════
+         SERVICES SECTION HEADER
+      ══════════════════════════════════════════════ */
       #services-main {
-        padding: 80px 0 120px 0;
+        padding: 80px 0 40px;
         background: var(--void);
       }
       .services-header {
-        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
         margin-bottom: 56px;
+        max-width: 720px;
       }
       .services-headline {
         font-family: var(--font-display);
-        font-size: clamp(2.2rem, 4vw, 3.8rem);
+        font-size: clamp(2.2rem, 4.5vw, 3.8rem);
         font-weight: 900;
         letter-spacing: -0.03em;
-        margin-bottom: 16px;
+        line-height: 1.08;
       }
       .services-headline em {
         font-style: normal;
@@ -541,301 +423,377 @@
       }
       .services-subhead {
         color: var(--muted);
-        font-size: 1rem;
-        line-height: 1.7;
-        max-width: 560px;
-        margin: 0 auto;
+        font-size: 0.95rem;
+        line-height: 1.75;
+        max-width: 620px;
+        padding-left: 0;
+        border-left: none;
+        align-self: start;
       }
 
-      .services-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-      }
-      @media (max-width: 1024px) {
-        .services-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-      @media (max-width: 640px) {
-        .services-grid {
-          grid-template-columns: 1fr;
-          max-width: 440px;
-          margin: 0 auto;
-        }
-      }
-
-      .service-card {
-        border-radius: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.06);
-        background: rgba(10, 22, 40, 0.7);
-        padding: 28px 24px;
-        cursor: pointer;
-        position: relative;
-        overflow: hidden;
-        transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      /* ══════════════════════════════════════════════
+         SERVICE ROWS — Icon slides in from right on hover
+      ══════════════════════════════════════════════ */
+      .services-list {
         display: flex;
         flex-direction: column;
-      }
-      .service-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 1px;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(132, 204, 22, 0),
-          transparent
-        );
-        transition: background 0.4s;
-      }
-      .service-card:hover {
-        border-color: rgba(132, 204, 22, 0.35);
-        transform: translateY(-8px);
-        box-shadow:
-          0 30px 70px rgba(0, 0, 0, 0.5),
-          0 0 0 1px rgba(132, 204, 22, 0.08);
-      }
-      .service-card:hover::before {
-        background: linear-gradient(
-          90deg,
-          transparent,
-          var(--lime),
-          transparent
-        );
-      }
-      .service-card.expanded {
-        border-color: rgba(132, 204, 22, 0.4);
-        box-shadow:
-          0 30px 70px rgba(0, 0, 0, 0.55),
-          0 0 40px rgba(132, 204, 22, 0.08);
-      }
-      .service-card-icon {
-        width: 52px;
-        height: 52px;
-        border-radius: 14px;
-        background: rgba(132, 204, 22, 0.07);
-        border: 1px solid rgba(132, 204, 22, 0.18);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 22px;
-        color: var(--lime);
-        margin-bottom: 18px;
-        flex-shrink: 0;
-        transition: all 0.3s;
-      }
-      .service-card:hover .service-card-icon {
-        background: rgba(132, 204, 22, 0.14);
-        border-color: rgba(132, 204, 22, 0.35);
-        box-shadow: 0 0 30px rgba(132, 204, 22, 0.2);
-        transform: scale(1.05);
-      }
-      .service-card-name {
-        font-family: var(--font-display);
-        font-size: 1.05rem;
-        font-weight: 700;
-        letter-spacing: -0.01em;
-        margin-bottom: 8px;
-        color: #fff;
-      }
-      .service-card-desc {
-        font-size: 13px;
-        color: var(--muted);
-        line-height: 1.6;
-        flex-grow: 1;
-        margin-bottom: 16px;
-      }
-      .service-card-expand {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        font-family: var(--font-mono);
-        font-size: 10px;
-        color: var(--lime);
-        letter-spacing: 0.1em;
-        transition: gap 0.2s;
-      }
-      .service-card:hover .service-card-expand {
-        gap: 10px;
-      }
-      .service-card-detail {
-        max-height: 0;
-        overflow: hidden;
-        transition:
-          max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-          margin-top 0.5s ease,
-          opacity 0.4s ease;
-        opacity: 0;
-        margin-top: 0;
-      }
-      .service-card.expanded .service-card-detail {
-        max-height: 600px;
-        opacity: 1;
-        margin-top: 18px;
-      }
-      .service-detail-section {
-        margin-bottom: 12px;
-      }
-      .service-detail-label {
-        font-family: var(--font-mono);
-        font-size: 8px;
-        color: var(--lime);
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        margin-bottom: 6px;
-      }
-      .service-detail-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 5px;
-      }
-      .service-detail-tag {
-        font-family: var(--font-mono);
-        font-size: 9px;
-        padding: 4px 10px;
-        border-radius: 100px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        background: rgba(255, 255, 255, 0.03);
-        color: var(--muted);
-      }
-      .service-detail-outcomes {
-        font-size: 12px;
-        color: var(--muted);
-        line-height: 1.6;
-        padding-left: 16px;
-      }
-      .service-detail-outcomes li {
-        margin-bottom: 4px;
-      }
-      .service-detail-outcomes li::marker {
-        color: var(--lime);
-      }
-      .service-card-cta {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        margin-top: 12px;
-        padding: 9px 18px;
-        border-radius: 100px;
-        background: var(--lime);
-        color: var(--void);
-        font-size: 11px;
-        font-weight: 700;
-        letter-spacing: 0.06em;
-        text-decoration: none;
-        transition: all 0.3s;
-      }
-      .service-card-cta:hover {
-        box-shadow: 0 0 25px rgba(132, 204, 22, 0.4);
-        transform: translateY(-2px);
+        border-top: 1px solid rgba(255, 255, 255, 0.06);
       }
 
-      /* ═════════════════════ PROCESS ═════════════════════ */
-      #process-services {
+      .service-row {
+        display: flex;
+        align-items: stretch;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        position: relative;
+        overflow: hidden;
+        cursor: default;
+        min-height: 120px;
+        transition: background 0.4s ease;
+      }
+      .service-row:hover {
+        background: rgba(255, 255, 255, 0.015);
+      }
+
+      /* ── Decorative line on hover ── */
+      .service-row::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: var(--lime);
+        transform: scaleY(0);
+        transform-origin: bottom;
+        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        z-index: 3;
+      }
+      .service-row:hover::before {
+        transform: scaleY(1);
+      }
+
+      /* ── Row content ── */
+      .service-row-content {
+        display: grid;
+        grid-template-columns: 52px 1fr;
+        align-items: start;
+        gap: 24px;
+        padding: 28px 0;
+        flex: 1;
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        padding-right: 40px;
+      }
+      @media (max-width: 768px) {
+        .service-row-content {
+          grid-template-columns: 44px 1fr;
+          gap: 16px;
+          padding: 22px 0;
+          padding-right: 30px;
+        }
+      }
+      @media (max-width: 480px) {
+        .service-row-content {
+          grid-template-columns: 36px 1fr;
+          gap: 12px;
+          padding: 18px 0;
+          padding-right: 20px;
+        }
+      }
+
+      /* ── Number ── */
+      .service-number {
+        font-family: var(--font-display);
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--lime);
+        opacity: 0.3;
+        letter-spacing: 0.04em;
+        padding-top: 2px;
+        transition: opacity 0.4s ease;
+      }
+      .service-row:hover .service-number {
+        opacity: 0.7;
+      }
+      @media (max-width: 480px) {
+        .service-number {
+          font-size: 0.65rem;
+        }
+      }
+
+      /* ── Info ── */
+      .service-info {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        min-width: 0;
+        padding-top: 1px;
+      }
+      .service-name {
+        font-family: var(--font-display);
+        font-size: clamp(1.3rem, 3vw, 2.4rem);
+        font-weight: 700;
+        color: #fff;
+        letter-spacing: -0.02em;
+        transition: color 0.4s ease;
+        line-height: 1.2;
+      }
+      .service-row:hover .service-name {
+        color: var(--lime);
+      }
+
+      .service-desc {
+        font-size: 1rem;
+        color: var(--muted);
+        line-height: 1.7;
+        max-width: 520px;
+        margin: 0;
+      }
+      @media (max-width: 768px) {
+        .service-desc {
+          font-size: 0.95rem;
+          max-width: 100%;
+        }
+      }
+
+      /* ── LARGE CTA BUTTON ── */
+      .service-cta-wrap {
+        margin-top: 14px;
+        display: flex;
+      }
+      .service-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 14px;
+        padding: 16px 40px;
+        border-radius: 60px;
+        background: transparent;
+        color: var(--text);
+        font-size: 16px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-decoration: none;
+        border: 2px solid rgba(255, 255, 255, 0.15);
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        white-space: nowrap;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+      .service-cta::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--lime);
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        border-radius: 60px;
+        z-index: 0;
+      }
+      .service-cta:hover::before {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+      .service-cta span,
+      .service-cta i {
+        position: relative;
+        z-index: 1;
+        transition: color 0.3s ease;
+      }
+      .service-cta i {
+        font-size: 16px;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .service-cta:hover {
+        border-color: var(--lime);
+        box-shadow: 0 0 40px rgba(132, 204, 22, 0.2);
+        transform: scale(1.02);
+      }
+      .service-cta:hover span {
+        color: var(--void);
+      }
+      .service-cta:hover i {
+        transform: translateX(6px);
+        color: var(--void);
+      }
+
+      @media (max-width: 768px) {
+        .service-cta {
+          padding: 14px 30px;
+          font-size: 14px;
+          gap: 10px;
+        }
+        .service-cta i {
+          font-size: 14px;
+        }
+        .service-cta-wrap {
+          margin-top: 12px;
+        }
+      }
+      @media (max-width: 480px) {
+        .service-cta {
+          padding: 12px 24px;
+          font-size: 12px;
+          gap: 8px;
+          border-width: 1.5px;
+        }
+        .service-cta i {
+          font-size: 12px;
+        }
+        .service-cta-wrap {
+          margin-top: 10px;
+        }
+      }
+
+      /* ── Icon reveal — frameless, glowing, integrated ── */
+      .service-icon-reveal {
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%) translateX(120%);
+        opacity: 0;
+        transition:
+          transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+          opacity 0.5s ease;
+        pointer-events: none;
+        z-index: 1;
+        font-size: 6rem;
+        line-height: 1;
+        color: var(--lime);
+        text-shadow:
+          0 0 40px rgba(132, 204, 22, 0.15),
+          0 0 80px rgba(132, 204, 22, 0.08);
+        transition:
+          transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+          opacity 0.5s ease,
+          text-shadow 0.5s ease;
+        will-change: transform, opacity;
+      }
+      .service-row:hover .service-icon-reveal {
+        transform: translateY(-50%) translateX(0);
+        opacity: 1;
+        text-shadow:
+          0 0 60px rgba(132, 204, 22, 0.25),
+          0 0 120px rgba(132, 204, 22, 0.12);
+      }
+
+      /* responsive icon size */
+      @media (max-width: 1024px) {
+        .service-icon-reveal {
+          font-size: 4.5rem;
+          right: 16px;
+        }
+      }
+      @media (max-width: 768px) {
+        .service-icon-reveal {
+          font-size: 3.5rem;
+          right: 12px;
+        }
+        .service-row-content {
+          padding-right: 70px;
+        }
+      }
+      @media (max-width: 480px) {
+        .service-icon-reveal {
+          display: none;
+        }
+        .service-row-content {
+          padding-right: 20px;
+        }
+      }
+
+      /* ══════════════════════════════════════════════
+         TECH STACK SECTION
+      ══════════════════════════════════════════════ */
+      #tech-stack {
         padding: 120px 0;
         background: var(--deep);
+        border-top: 1px solid rgba(255, 255, 255, 0.04);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
       }
-      .process-services-title {
+      .tech-header {
+        text-align: center;
+        margin-bottom: 64px;
+      }
+      .tech-title {
         font-family: var(--font-display);
         font-size: clamp(2rem, 3.6vw, 3.4rem);
         font-weight: 900;
         letter-spacing: -0.03em;
-        margin-bottom: 64px;
-        text-align: center;
       }
-      .process-timeline {
-        max-width: 700px;
+      .tech-title em {
+        font-style: normal;
+        color: var(--lime);
+      }
+      .tech-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 20px;
+        max-width: 1000px;
         margin: 0 auto;
-        position: relative;
       }
-      .process-timeline::before {
-        content: "";
-        position: absolute;
-        left: 27px;
-        top: 0;
-        bottom: 0;
-        width: 2px;
-        background: linear-gradient(
-          to bottom,
-          var(--lime),
-          rgba(132, 204, 22, 0.1)
-        );
-      }
-      @media (max-width: 600px) {
-        .process-timeline::before {
-          left: 20px;
-        }
-      }
-      .process-step {
-        display: flex;
-        gap: 28px;
-        margin-bottom: 40px;
-        position: relative;
-      }
-      .process-step:last-child {
-        margin-bottom: 0;
-      }
-      .process-step-node {
-        width: 56px;
-        height: 56px;
-        border-radius: 50%;
-        border: 2px solid var(--lime);
-        background: var(--deep);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 20px;
-        color: var(--lime);
-        flex-shrink: 0;
-        position: relative;
-        z-index: 2;
-        transition: all 0.4s;
-      }
-      @media (max-width: 600px) {
-        .process-step-node {
-          width: 42px;
-          height: 42px;
-          font-size: 16px;
-        }
-      }
-      .process-step-card {
-        flex: 1;
-        padding: 22px 24px;
-        border-radius: 16px;
-        border: 1px solid rgba(255, 255, 255, 0.06);
+      .tech-card {
         background: rgba(10, 22, 40, 0.6);
-        transition: all 0.4s;
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 16px;
+        padding: 24px 16px;
+        text-align: center;
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        backdrop-filter: blur(4px);
+        cursor: default;
       }
-      .process-step-card:hover {
-        border-color: rgba(132, 204, 22, 0.25);
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+      .tech-card:hover {
+        border-color: rgba(132, 204, 22, 0.3);
+        transform: translateY(-6px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        background: rgba(10, 22, 40, 0.8);
       }
-      .process-step-num {
-        font-family: var(--font-mono);
-        font-size: 10px;
+      .tech-card i {
+        font-size: 2.4rem;
         color: var(--lime);
-        letter-spacing: 0.15em;
-        margin-bottom: 6px;
+        transition: transform 0.3s;
       }
-      .process-step-name {
-        font-family: var(--font-display);
-        font-size: 1.1rem;
-        font-weight: 700;
-        color: #fff;
-        letter-spacing: -0.01em;
-        margin-bottom: 6px;
+      .tech-card:hover i {
+        transform: scale(1.1);
       }
-      .process-step-desc {
-        font-size: 13px;
+      .tech-card .tech-name {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        font-weight: 500;
         color: var(--muted);
-        line-height: 1.6;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .tech-card .tech-category {
+        font-size: 8px;
+        font-family: var(--font-mono);
+        color: rgba(132, 204, 22, 0.5);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-top: 4px;
+      }
+      @media (max-width: 600px) {
+        .tech-grid {
+          grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+          gap: 14px;
+        }
+        .tech-card {
+          padding: 18px 12px;
+        }
+        .tech-card i {
+          font-size: 1.8rem;
+        }
       }
 
-      /* ═════════════════════ COMPARISON ═════════════════════ */
+      /* ══════════════════════════════════════════════
+         WHY ME
+      ══════════════════════════════════════════════ */
       #why-me {
         padding: 120px 0;
         background: var(--void);
@@ -917,7 +875,9 @@
         color: var(--lime);
       }
 
-      /* ═════════════════════ FINAL CTA ═════════════════════ */
+      /* ══════════════════════════════════════════════
+         FINAL CTA
+      ══════════════════════════════════════════════ */
       #final-cta {
         padding: 140px 0;
         background: var(--deep);
@@ -986,8 +946,64 @@
         justify-content: center;
         flex-wrap: wrap;
       }
+      .btn-primary {
+        padding: 15px 32px;
+        background: var(--lime);
+        color: var(--void);
+        font-weight: 700;
+        font-size: 14px;
+        letter-spacing: 0.06em;
+        border-radius: 100px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s;
+        position: relative;
+        overflow: hidden;
+        border: none;
+        cursor: pointer;
+      }
+      .btn-primary::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateX(-100%) skewX(-20deg);
+        transition: transform 0.4s;
+      }
+      .btn-primary:hover::before {
+        transform: translateX(150%) skewX(-20deg);
+      }
+      .btn-primary:hover {
+        box-shadow: 0 0 40px rgba(132, 204, 22, 0.4);
+        transform: translateY(-2px);
+      }
+      .btn-secondary {
+        padding: 15px 32px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        color: var(--text);
+        font-weight: 600;
+        font-size: 14px;
+        letter-spacing: 0.06em;
+        border-radius: 100px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s;
+        background: rgba(255, 255, 255, 0.03);
+        cursor: pointer;
+      }
+      .btn-secondary:hover {
+        border-color: var(--lime);
+        color: var(--lime);
+        background: rgba(132, 204, 22, 0.05);
+      }
 
-      /* ═════════════════════ FOOTER ═════════════════════ */
+      /* ══════════════════════════════════════════════
+         FOOTER
+      ══════════════════════════════════════════════ */
       footer.ft-root {
         background: var(--void);
         font-family: var(--font-mono);
@@ -1045,7 +1061,6 @@
         color: var(--muted);
         line-height: 1.65;
         max-width: 240px;
-        margin: 0;
       }
       .ft-avail {
         display: inline-flex;
@@ -1096,14 +1111,6 @@
       }
       .ft-link:hover {
         color: var(--lime);
-      }
-      .ft-link svg {
-        opacity: 0.5;
-        flex-shrink: 0;
-        transition: opacity 0.2s;
-      }
-      .ft-link:hover svg {
-        opacity: 1;
       }
       .ft-social-grid {
         display: grid;
@@ -1180,6 +1187,7 @@
         <li><a href="services.html" class="active">Services</a></li>
         <li><a href="index.html#projects">Work</a></li>
         <li><a href="index.html#process">Process</a></li>
+        <li><a href="#faq">FAQ</a></li>
         <li><a href="index.html#pricing">Pricing</a></li>
         <li><a href="index.html#contact">Contact</a></li>
       </ul>
@@ -1220,47 +1228,40 @@
         <li>
           <a href="index.html#about"
             ><span class="link-icon"><i class="fa-regular fa-user"></i></span
-            ><span class="link-text">About</span></a
+            ><span>About</span></a
           >
         </li>
         <li>
           <a href="services.html"
             ><span class="link-icon"><i class="fa-solid fa-briefcase"></i></span
-            ><span class="link-text">Services</span></a
+            ><span>Services</span></a
           >
         </li>
         <li>
           <a href="index.html#projects"
             ><span class="link-icon"><i class="fa-regular fa-folder"></i></span
-            ><span class="link-text">Work</span></a
+            ><span>Work</span></a
           >
         </li>
         <li>
           <a href="index.html#process"
             ><span class="link-icon"
               ><i class="fa-solid fa-arrow-right-arrow-left"></i></span
-            ><span class="link-text">Process</span></a
-          >
-        </li>
-        <li>
-          <a href="index.html#faq"
-            ><span class="link-icon"
-              ><i class="fa-regular fa-circle-question"></i></span
-            ><span class="link-text">FAQ</span></a
+            ><span>Process</span></a
           >
         </li>
         <li>
           <a href="index.html#pricing"
             ><span class="link-icon"
               ><i class="fa-regular fa-credit-card"></i></span
-            ><span class="link-text">Pricing</span></a
+            ><span>Pricing</span></a
           >
         </li>
         <li>
           <a href="index.html#contact"
             ><span class="link-icon"
               ><i class="fa-regular fa-envelope"></i></span
-            ><span class="link-text">Contact</span></a
+            ><span>Contact</span></a
           >
         </li>
       </ul>
@@ -1269,84 +1270,56 @@
           href="https://wa.me/792624342?text=Hello%20I'm%20interested%20in%20your%20services"
           target="_blank"
           class="mobile-menu-cta"
-          ><i class="fa-brands fa-whatsapp"></i> Hire Me</a
         >
+          <i class="fa-brands fa-whatsapp"></i> Hire Me
+        </a>
       </div>
     </div>
 
-    <!-- ════════════════════════════════════════════════════════════════ -->
-    <!-- STATS STRIP – TOP (first thing visible)                       -->
-    <!-- ════════════════════════════════════════════════════════════════ -->
-    <section id="stats-strip-top">
-      <div class="section-inner">
-        <div class="stats-strip-grid">
-          <div class="stats-strip-item reveal">
-            <div class="stats-strip-number" data-count="30">0</div>
-            <div class="stats-strip-label">Projects</div>
-          </div>
-          <div class="stats-strip-item reveal">
-            <div class="stats-strip-number" data-count="100">0</div>
-            <div class="stats-strip-label">% Satisfaction</div>
-          </div>
-          <div class="stats-strip-item reveal">
-            <div class="stats-strip-number" data-count="12">0</div>
-            <div class="stats-strip-label">Technologies</div>
-          </div>
-          <div class="stats-strip-item reveal">
-            <div class="stats-strip-number" data-count="3">0</div>
-            <div class="stats-strip-label">Years Exp.</div>
-          </div>
-          <div class="stats-strip-item reveal">
-            <div class="stats-strip-number" data-count="24">0</div>
-            <div class="stats-strip-label">Hr Response</div>
-          </div>
-          <div class="stats-strip-item reveal">
-            <div class="stats-strip-number" data-count="15">0</div>
-            <div class="stats-strip-label">Clients</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ════════════════════════════════════════════════════════════════ -->
-    <!-- SERVICES GRID – main content starts here                      -->
-    <!-- ════════════════════════════════════════════════════════════════ -->
+    <!-- ══ SERVICES ═══════════════════════════════════════════ -->
     <section id="services-main">
       <div class="section-inner">
-        <div class="services-header reveal">
-          <div class="section-label">What I Offer</div>
-          <h2 class="services-headline">Premium <em>Digital Services</em></h2>
-          <p class="services-subhead">
+        <div class="services-header">
+          <div class="section-label reveal">What I Offer</div>
+          <h2 class="services-headline reveal">
+            Premium<br /><em>Digital Services</em>
+          </h2>
+          <p class="services-subhead reveal">
             End-to-end solutions tailored to your business. Each service is
             delivered with enterprise-grade quality, clean code, and obsessive
-            attention to detail.
+            attention to detail. Hover over any service to preview the work.
           </p>
         </div>
-        <div class="services-grid" id="servicesGrid"></div>
+
+        <!-- Service rows with icon reveal on hover -->
+        <div class="services-list" id="servicesList"></div>
       </div>
     </section>
 
-    <!-- ════════════════════════════════════════════════════════════════ -->
-    <!-- PROCESS                                                       -->
-    <!-- ════════════════════════════════════════════════════════════════ -->
-    <section id="process-services">
+    <!-- ══ TECH STACK ══════════════════════════════════════════ -->
+    <section id="tech-stack">
       <div class="section-inner">
-        <div
-          class="section-label reveal"
-          style="text-align: center; display: block"
-        >
-          How It Works
+        <div class="tech-header">
+          <div
+            class="section-label reveal"
+            style="display: block; text-align: center"
+          >
+            Arsenal
+          </div>
+          <h2 class="tech-title reveal">Tech <em>Stack</em></h2>
+          <p
+            style="color: var(--muted); font-size: 0.95rem; margin-top: 12px"
+            class="reveal"
+          >
+            Tools and technologies I work with daily to ship production‑grade
+            digital products.
+          </p>
         </div>
-        <h2 class="process-services-title reveal">
-          From Concept <em>To Launch</em>
-        </h2>
-        <div class="process-timeline" id="processTimeline"></div>
+        <div class="tech-grid" id="techGrid"></div>
       </div>
     </section>
 
-    <!-- ════════════════════════════════════════════════════════════════ -->
-    <!-- WHY WORK WITH ME                                              -->
-    <!-- ════════════════════════════════════════════════════════════════ -->
+    <!-- ══ WHY ME ══════════════════════════════════════════════ -->
     <section id="why-me">
       <div class="section-inner">
         <div
@@ -1357,7 +1330,7 @@
         </div>
         <h2 class="why-me-title reveal">Why Work <em>With Me</em></h2>
         <div class="comparison-grid reveal">
-          <div class="comparison-col bad">
+          <div class="comparison-col bad reveal">
             <div class="comparison-col-title">
               <i class="fa-solid fa-circle-xmark"></i> Typical Freelancer
             </div>
@@ -1388,7 +1361,7 @@
               <i class="fa-solid fa-xmark"></i> No business understanding
             </div>
           </div>
-          <div class="comparison-col good">
+          <div class="comparison-col good reveal">
             <div class="comparison-col-title">
               <i class="fa-solid fa-circle-check"></i> My Approach
             </div>
@@ -1428,9 +1401,7 @@
       </div>
     </section>
 
-    <!-- ════════════════════════════════════════════════════════════════ -->
-    <!-- FINAL CTA                                                     -->
-    <!-- ════════════════════════════════════════════════════════════════ -->
+    <!-- ══ FINAL CTA ══════════════════════════════════════════ -->
     <section id="final-cta">
       <div class="section-inner">
         <h2 class="final-cta-headline reveal">
@@ -1448,7 +1419,7 @@
             style="font-size: 15px; padding: 18px 38px"
           >
             <i class="fa-brands fa-whatsapp"></i> Start the Conversation
-            <span>&#8594;</span>
+            <span>→</span>
           </a>
           <a
             href="mailto:allankirimi65@gmail.com"
@@ -1465,9 +1436,7 @@
       </div>
     </section>
 
-    <!-- ════════════════════════════════════════════════════════════════ -->
-    <!-- FOOTER                                                        -->
-    <!-- ════════════════════════════════════════════════════════════════ -->
+    <!-- ══ FOOTER ══════════════════════════════════════════════ -->
     <footer class="ft-root">
       <div class="ft-top">
         <div class="ft-logo-col">
@@ -1548,389 +1517,192 @@
     </footer>
 
     <script>
-      /* ═════════════════════ DATA ═════════════════════ */
-      const services = [
+      /* ═══════════════════════════════════════════
+         DATA — 9 services
+      ═══════════════════════════════════════════ */
+      const servicesData = [
         {
-          name: "Premium Business Websites",
+          name: "Business Websites",
           icon: "fa-solid fa-globe",
-          desc: "High-converting, beautifully engineered websites that establish credibility and turn visitors into customers.",
-          who: "Corporates, startups, restaurants, hotels, schools, NGOs, healthcare, churches, real estate, construction firms.",
-          outcomes: [
-            "Increased online credibility",
-            "Higher customer conversion",
-            "Professional brand image",
-            "Mobile-first responsive design",
-          ],
-          deliverables: [
-            "Custom-designed pages",
-            "SEO foundation",
-            "Contact forms",
-            "Hosting & domain setup",
-          ],
-          tech: ["React", "Next.js", "Tailwind CSS", "Framer Motion"],
-          timeline: "2–3 weeks",
+          desc: "Create modern, high-performing websites that help businesses establish credibility, showcase their services, and convert visitors into customers. Every website is fully responsive, optimized for speed, and designed to reflect your brand while providing an exceptional user experience across all devices.",
+          cta: "Book a call",
+          ctaLink:
+            "https://wa.me/792624342?text=Hi%20Allan,%20I'd%20like%20to%20discuss%20Business%20Websites",
         },
         {
-          name: "Custom Web Applications",
-          icon: "fa-solid fa-layer-group",
-          desc: "Bespoke software solutions that automate operations, manage data, and scale with your business.",
-          who: "Businesses needing CRMs, school management systems, hospital systems, inventory, POS, booking platforms, SaaS.",
-          outcomes: [
-            "Operational efficiency",
-            "Centralized data management",
-            "Reduced manual work",
-            "Scalable infrastructure",
-          ],
-          deliverables: [
-            "Full-stack application",
-            "Admin dashboard",
-            "User authentication",
-            "API integrations",
-          ],
-          tech: ["React", "Node.js", "MongoDB", "Express"],
-          timeline: "4–8 weeks",
+          name: "Landing Pages",
+          icon: "fa-solid fa-rocket",
+          desc: "Launch high-converting landing pages built specifically for marketing campaigns, product launches, and lead generation. Every page is strategically designed with persuasive copy, clear calls-to-action, and optimized layouts that maximize conversions and drive measurable business results.",
+          cta: "Book a call",
+          ctaLink:
+            "https://wa.me/792624342?text=Hi%20Allan,%20I'd%20like%20to%20discuss%20Landing%20Pages",
         },
         {
-          name: "UI / UX Design",
+          name: "UI/UX Design",
           icon: "fa-solid fa-pen-ruler",
-          desc: "Research-driven design that balances aesthetics with usability, creating interfaces users love.",
-          who: "Startups, enterprises, and product teams needing UX audits, wireframes, prototypes, design systems, or redesigns.",
-          outcomes: [
-            "Improved user engagement",
-            "Higher conversion rates",
-            "Accessible interfaces",
-            "Consistent brand experience",
-          ],
-          deliverables: [
-            "Wireframes",
-            "Interactive prototypes",
-            "Design system",
-            "User research report",
-          ],
-          tech: ["Figma", "Framer", "Tailwind CSS", "Accessibility standards"],
-          timeline: "2–4 weeks",
+          desc: "Design intuitive and visually engaging digital experiences that prioritize both aesthetics and usability. From wireframes and interactive prototypes to complete website redesigns, every interface is crafted to improve user satisfaction, strengthen brand identity, and increase engagement.",
+          cta: "Book a call",
+          ctaLink:
+            "https://wa.me/792624342?text=Hi%20Allan,%20I'd%20like%20to%20discuss%20UI%2FUX%20Design",
         },
         {
-          name: "Mobile App Development",
-          icon: "fa-solid fa-mobile-screen",
-          desc: "Cross-platform mobile applications that deliver native-quality experiences on both Android and iOS.",
-          who: "Businesses wanting customer-facing apps, internal tools, or mobile extensions of their web platforms.",
-          outcomes: [
-            "Cross-platform reach",
-            "Fast time-to-market",
-            "Consistent UX",
-            "Offline capabilities",
-          ],
-          deliverables: [
-            "Android & iOS build",
-            "App store submission",
-            "Push notifications",
-            "API integration",
-          ],
-          tech: ["React Native", "Flutter", "Firebase", "REST APIs"],
-          timeline: "6–10 weeks",
+          name: "E-commerce Websites",
+          icon: "fa-solid fa-cart-shopping",
+          desc: "Build secure, scalable online stores that make it easy for customers to browse, purchase, and complete transactions with confidence. Whether you're launching a new store or upgrading an existing one, every solution is optimized for performance, user experience, and long-term business growth.",
+          cta: "Book a call",
+          ctaLink:
+            "https://wa.me/792624342?text=Hi%20Allan,%20I'd%20like%20to%20discuss%20E-commerce%20Websites",
         },
         {
-          name: "AI Solutions",
-          icon: "fa-solid fa-brain",
-          desc: "Intelligent automation using AI — chatbots, assistants, document processing, and GPT-powered workflows.",
-          who: "Businesses wanting to automate support, process documents, build knowledge bases, or integrate AI into existing products.",
-          outcomes: [
-            "24/7 automated support",
-            "Faster document processing",
-            "Reduced operational costs",
-            "Scalable knowledge systems",
-          ],
-          deliverables: [
-            "AI chatbot",
-            "Workflow automation",
-            "GPT integration",
-            "Knowledge base",
-          ],
-          tech: ["OpenAI API", "LangChain", "Node.js", "Vector DBs"],
-          timeline: "3–6 weeks",
-        },
-        {
-          name: "API Development & Integrations",
-          icon: "fa-solid fa-plug",
-          desc: "Robust, secure, and well-documented APIs that connect your systems and power your digital products.",
-          who: "Businesses needing REST APIs, third-party integrations, authentication systems, or custom backend architecture.",
-          outcomes: [
-            "Seamless system integration",
-            "Secure data exchange",
-            "Scalable architecture",
-            "Clear documentation",
-          ],
-          deliverables: [
-            "RESTful API",
-            "Auth system",
-            "API documentation",
-            "Rate limiting & security",
-          ],
-          tech: ["Node.js", "Express", "JWT", "Postman"],
-          timeline: "2–5 weeks",
-        },
-        {
-          name: "Payment Integrations",
+          name: "Payment Gateway Integration",
           icon: "fa-solid fa-credit-card",
-          desc: "Seamless payment processing with M-Pesa, Stripe, Paystack, Flutterwave, and subscription management.",
-          who: "E-commerce stores, SaaS platforms, and any business needing to accept payments online.",
-          outcomes: [
-            "Increased sales",
-            "Multiple payment options",
-            "Recurring revenue",
-            "Secure transactions",
-          ],
-          deliverables: [
-            "Payment gateway setup",
-            "Checkout flow",
-            "Subscription system",
-            "Invoice generation",
-          ],
-          tech: ["Stripe", "M-Pesa", "Paystack", "Flutterwave"],
-          timeline: "1–3 weeks",
+          desc: "Integrate secure and reliable payment solutions that enable seamless online transactions. From M-Pesa and Stripe to Paystack and Flutterwave, every integration is implemented with security, reliability, and a smooth checkout experience in mind to help businesses accept payments effortlessly.",
+          cta: "Book a call",
+          ctaLink:
+            "https://wa.me/792624342?text=Hi%20Allan,%20I'd%20like%20to%20discuss%20Payment%20Gateway%20Integration",
         },
         {
           name: "Website Optimization",
           icon: "fa-solid fa-gauge-high",
-          desc: "Performance tuning that boosts Core Web Vitals, SEO rankings, and conversion rates.",
-          who: "Existing websites that are slow, poorly ranked, or not converting visitors into customers.",
-          outcomes: [
-            "90+ Lighthouse scores",
-            "Higher SEO rankings",
-            "Better user experience",
-            "Increased conversions",
-          ],
-          deliverables: [
-            "Performance audit",
-            "Optimization report",
-            "Image & code optimization",
-            "Analytics setup",
-          ],
-          tech: ["Lighthouse", "Webpack", "CDN", "Caching strategies"],
-          timeline: "1–2 weeks",
-        },
-        {
-          name: "DevOps & Deployment",
-          icon: "fa-solid fa-server",
-          desc: "Reliable deployment pipelines, VPS setup, CI/CD, SSL, monitoring, and cloud infrastructure.",
-          who: "Businesses launching new products or needing reliable hosting, domain setup, and deployment automation.",
-          outcomes: [
-            "Zero-downtime deployments",
-            "Automated CI/CD",
-            "Secure infrastructure",
-            "24/7 monitoring",
-          ],
-          deliverables: [
-            "VPS / cloud setup",
-            "CI/CD pipeline",
-            "SSL certificates",
-            "Backup strategy",
-          ],
-          tech: ["Docker", "AWS", "Nginx", "GitHub Actions"],
-          timeline: "1–3 weeks",
-        },
-        {
-          name: "Website Maintenance",
-          icon: "fa-solid fa-wrench",
-          desc: "Ongoing care — security updates, bug fixes, backups, monitoring, and feature enhancements.",
-          who: "Businesses with existing websites that need reliable, proactive maintenance and support.",
-          outcomes: [
-            "Secure, up-to-date site",
-            "Zero downtime",
-            "Continuous improvement",
-            "Peace of mind",
-          ],
-          deliverables: [
-            "Monthly maintenance",
-            "Security patches",
-            "Performance monitoring",
-            "Priority support",
-          ],
-          tech: [
-            "Monitoring tools",
-            "Automated backups",
-            "SSL renewal",
-            "Uptime checks",
-          ],
-          timeline: "Ongoing monthly",
+          desc: "Improve your website's overall performance with advanced optimization techniques focused on speed, responsiveness, accessibility, and user experience. From faster loading times and improved Core Web Vitals to higher Lighthouse scores, every enhancement is designed to deliver a smoother experience while supporting better search engine rankings.",
+          cta: "Book a call",
+          ctaLink:
+            "https://wa.me/792624342?text=Hi%20Allan,%20I'd%20like%20to%20discuss%20Website%20Optimization",
         },
         {
           name: "Website Audits",
           icon: "fa-solid fa-magnifying-glass-chart",
-          desc: "Comprehensive technical, UX, SEO, accessibility, performance, and security audits with actionable reports.",
-          who: "Businesses wanting to understand what is wrong with their current site and how to fix it.",
-          outcomes: [
-            "Clear action plan",
-            "Identified issues",
-            "Prioritized fixes",
-            "Better ROI on web investment",
-          ],
-          deliverables: [
-            "Audit report",
-            "Actionable recommendations",
-            "Priority matrix",
-            "Follow-up call",
-          ],
-          tech: ["Lighthouse", "Screaming Frog", "Axe", "Manual review"],
-          timeline: "3–5 days",
+          desc: "Receive a comprehensive evaluation of your website to identify opportunities for improvement across performance, SEO, accessibility, design, and security. Each audit includes actionable recommendations that help improve user experience, increase visibility, and maximize your website's overall effectiveness.",
+          cta: "Book a call",
+          ctaLink:
+            "https://wa.me/792624342?text=Hi%20Allan,%20I'd%20like%20to%20discuss%20Website%20Audits",
         },
         {
-          name: "Technical Consulting",
-          icon: "fa-solid fa-comments",
-          desc: "Strategic guidance on architecture, technology selection, scaling, and product development roadmaps.",
-          who: "Startups planning MVPs, enterprises evaluating tech stacks, or businesses scaling digital products.",
-          outcomes: [
-            "Right technology choices",
-            "Scalable architecture",
-            "Clear roadmap",
-            "Reduced technical debt",
-          ],
-          deliverables: [
-            "Architecture plan",
-            "Technology recommendation",
-            "Development roadmap",
-            "Risk assessment",
-          ],
-          tech: [
-            "MERN stack",
-            "Cloud architecture",
-            "System design",
-            "Best practices",
-          ],
-          timeline: "1–2 weeks",
+          name: "Website Maintenance",
+          icon: "fa-solid fa-wrench",
+          desc: "Keep your website secure, reliable, and performing at its best with ongoing maintenance and support. Services include regular updates, bug fixes, security monitoring, backups, content updates, and continuous performance improvements, ensuring your website remains fast, stable, and up to date.",
+          cta: "Book a call",
+          ctaLink:
+            "https://wa.me/792624342?text=Hi%20Allan,%20I'd%20like%20to%20discuss%20Website%20Maintenance",
+        },
+        {
+          name: "Basic SEO Optimization",
+          icon: "fa-solid fa-chart-line",
+          desc: "Increase your website's visibility with essential search engine optimization practices that improve discoverability and organic traffic. Services include technical SEO, metadata optimization, sitemap configuration, structured data implementation, image optimization, and performance enhancements to help your website rank higher and reach the right audience.",
+          cta: "Book a call",
+          ctaLink:
+            "https://wa.me/792624342?text=Hi%20Allan,%20I'd%20like%20to%20discuss%20Basic%20SEO%20Optimization",
         },
       ];
 
-      const processSteps = [
+      /* ═══════════════════════════════════════════
+         TECH STACK DATA
+      ═══════════════════════════════════════════ */
+      const techItems = [
+        {name: "React", icon: "fa-brands fa-react", category: "Frontend"},
+        {name: "Next.js", icon: "fa-brands fa-react", category: "Frontend"},
+        {name: "TypeScript", icon: "fa-solid fa-code", category: "Frontend"},
         {
-          name: "Discovery",
-          icon: "fa-solid fa-magnifying-glass",
-          desc: "Deep dive into your business, goals, users, and competitors. We define success together.",
+          name: "Tailwind CSS",
+          icon: "fa-brands fa-css3-alt",
+          category: "Frontend",
         },
+        {name: "Node.js", icon: "fa-brands fa-node-js", category: "Backend"},
+        {name: "Express", icon: "fa-solid fa-server", category: "Backend"},
+        {name: "MongoDB", icon: "fa-solid fa-database", category: "Database"},
         {
-          name: "Strategy",
-          icon: "fa-solid fa-chess",
-          desc: "Technical architecture, user flows, and technology stack mapped for scalability and performance.",
+          name: "PostgreSQL",
+          icon: "fa-solid fa-database",
+          category: "Database",
         },
-        {
-          name: "Design",
-          icon: "fa-solid fa-palette",
-          desc: "Pixel-perfect UI/UX crafted to balance beauty with conversion-focused functionality.",
-        },
-        {
-          name: "Development",
-          icon: "fa-solid fa-code",
-          desc: "Clean, tested code shipped daily. Built with MERN stack — fast, secure, production-ready.",
-        },
-        {
-          name: "Testing",
-          icon: "fa-solid fa-vial-circle-check",
-          desc: "Rigorous QA across devices, browsers, and edge cases. Performance and security validated.",
-        },
-        {
-          name: "Launch",
-          icon: "fa-solid fa-rocket",
-          desc: "Smooth deployment, DNS setup, SSL, and go-live. Everything configured for production.",
-        },
-        {
-          name: "Support",
-          icon: "fa-solid fa-life-ring",
-          desc: "Post-launch care, monitoring, and ongoing optimization to keep your product healthy.",
-        },
+        {name: "Firebase", icon: "fa-solid fa-fire", category: "Backend"},
+        {name: "Docker", icon: "fa-brands fa-docker", category: "DevOps"},
+        {name: "AWS", icon: "fa-brands fa-aws", category: "DevOps"},
+        {name: "Git", icon: "fa-brands fa-git-alt", category: "DevOps"},
+        {name: "Figma", icon: "fa-brands fa-figma", category: "Design"},
+        {name: "Framer", icon: "fa-solid fa-cube", category: "Design"},
+        {name: "JWT", icon: "fa-solid fa-lock", category: "Security"},
+        {name: "REST", icon: "fa-solid fa-plug", category: "API"},
+        {name: "GraphQL", icon: "fa-solid fa-graph", category: "API"},
+        {name: "Python", icon: "fa-brands fa-python", category: "AI/Data"},
+        {name: "LangChain", icon: "fa-solid fa-brain", category: "AI"},
+        {name: "OpenAI", icon: "fa-solid fa-robot", category: "AI"},
       ];
 
-      /* ═════════════════════ RENDER SERVICES ═════════════════════ */
-      const grid = document.getElementById("servicesGrid");
-      grid.innerHTML = services
-        .map(
-          (s, i) => `
-            <div class="service-card reveal" data-index="${i}">
-              <div class="service-card-icon"><i class="${s.icon}"></i></div>
-              <div class="service-card-name">${s.name}</div>
-              <div class="service-card-desc">${s.desc}</div>
-              <span class="service-card-expand">Learn more <i class="fa-solid fa-chevron-down"></i></span>
-              <div class="service-card-detail">
-                <div class="service-detail-section">
-                  <div class="service-detail-label">Who It's For</div>
-                  <p style="font-size:12px;color:var(--muted);line-height:1.6;">${s.who}</p>
+      /* ═══════════════════════════════════════════
+         RENDER: Service Rows with Icon Reveal
+      ═══════════════════════════════════════════ */
+      const list = document.getElementById("servicesList");
+
+      servicesData.forEach((service, index) => {
+        const num = String(index + 1).padStart(2, "0");
+        const total = String(servicesData.length).padStart(2, "0");
+
+        const row = document.createElement("div");
+        row.className = "service-row reveal";
+
+        row.innerHTML = `
+            <div class="service-row-content">
+              <span class="service-number">${num}/${total}</span>
+              <div class="service-info">
+                <div class="service-name">${service.name}</div>
+                <div class="service-desc">${service.desc}</div>
+                <div class="service-cta-wrap">
+                  <a href="${service.ctaLink}" target="_blank" class="service-cta">
+                    <span>${service.cta}</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </a>
                 </div>
-                <div class="service-detail-section">
-                  <div class="service-detail-label">Business Outcomes</div>
-                  <ul class="service-detail-outcomes">${s.outcomes.map((o) => `<li>${o}</li>`).join("")}</ul>
-                </div>
-                <div class="service-detail-section">
-                  <div class="service-detail-label">Deliverables</div>
-                  <div class="service-detail-tags">${s.deliverables.map((d) => `<span class="service-detail-tag">${d}</span>`).join("")}</div>
-                </div>
-                <div class="service-detail-section">
-                  <div class="service-detail-label">Tech Stack</div>
-                  <div class="service-detail-tags">${s.tech.map((t) => `<span class="service-detail-tag">${t}</span>`).join("")}</div>
-                </div>
-                <div class="service-detail-section">
-                  <div class="service-detail-label">Timeline</div>
-                  <p style="font-size:12px;color:var(--lime);">${s.timeline}</p>
-                </div>
-                <a href="https://wa.me/792624342?text=Hi%20Allan,%20I'm%20interested%20in%20${encodeURIComponent(s.name)}%20for%20my%20business.%20Could%20we%20discuss%20details?" target="_blank" class="service-card-cta">
-                  <i class="fa-brands fa-whatsapp"></i> Discuss This Service
-                </a>
               </div>
             </div>
-          `,
-        )
-        .join("");
+            <div class="service-icon-reveal">
+              <i class="${service.icon}"></i>
+            </div>
+          `;
 
-      /* ═════════════════════ SERVICE CARD EXPAND ═════════════════════ */
-      document.querySelectorAll(".service-card").forEach((card) => {
-        card.addEventListener("click", function (e) {
-          if (e.target.closest(".service-card-cta")) return;
-          const wasExpanded = this.classList.contains("expanded");
-          document
-            .querySelectorAll(".service-card")
-            .forEach((c) => c.classList.remove("expanded"));
-          if (!wasExpanded) {
-            this.classList.add("expanded");
-            setTimeout(() => {
-              this.scrollIntoView({behavior: "smooth", block: "nearest"});
-            }, 150);
-          }
-        });
+        list.appendChild(row);
       });
 
-      /* ═════════════════════ RENDER PROCESS ═════════════════════ */
-      const timeline = document.getElementById("processTimeline");
-      timeline.innerHTML = processSteps
+      /* ═══════════════════════════════════════════
+         RENDER: Tech Stack Grid
+      ═══════════════════════════════════════════ */
+      const techGrid = document.getElementById("techGrid");
+      techGrid.innerHTML = techItems
         .map(
-          (s, i) => `
-            <div class="process-step reveal">
-              <div class="process-step-node"><i class="${s.icon}"></i></div>
-              <div class="process-step-card">
-                <div class="process-step-num">STEP ${String(i + 1).padStart(2, "0")}</div>
-                <div class="process-step-name">${s.name}</div>
-                <div class="process-step-desc">${s.desc}</div>
-              </div>
+          (t) => `
+            <div class="tech-card reveal">
+              <i class="${t.icon}"></i>
+              <span class="tech-name">${t.name}</span>
+              <span class="tech-category">${t.category}</span>
             </div>
           `,
         )
         .join("");
 
-      /* ═════════════════════ SCROLL PROGRESS ═════════════════════ */
+      /* ═══════════════════════════════════════════
+         SCROLL PROGRESS
+      ═══════════════════════════════════════════ */
       const scrollProg = document.getElementById("scroll-prog");
       window.addEventListener("scroll", () => {
         scrollProg.style.transform = `scaleX(${window.scrollY / (document.body.scrollHeight - window.innerHeight)})`;
       });
 
-      /* ═════════════════════ GSAP SCROLL REVEALS ═════════════════════ */
+      /* ═══════════════════════════════════════════
+         GSAP + SCROLLTRIGGER — SMOOTH REVEALS
+      ═══════════════════════════════════════════ */
       gsap.registerPlugin(ScrollTrigger);
-      document.querySelectorAll(".reveal").forEach((el) => {
+
+      // 1. Staggered service rows
+      gsap.utils.toArray(".service-row").forEach((el, i) => {
         gsap.fromTo(
           el,
-          {opacity: 0, y: 50},
+          {opacity: 0, y: 40},
           {
             opacity: 1,
             y: 0,
-            duration: 0.9,
+            duration: 0.8,
             ease: "power3.out",
+            delay: i * 0.06,
             scrollTrigger: {
               trigger: el,
               start: "top 88%",
@@ -1940,40 +1712,50 @@
         );
       });
 
-      /* ═════════════════════ COUNTER ANIMATION ═════════════════════ */
-      function animateCounters() {
-        document.querySelectorAll("[data-count]").forEach((el) => {
-          const target = parseInt(el.getAttribute("data-count"), 10);
-          const isPercent = el.textContent.includes("%");
-          let current = 0;
-          const increment = target / 50;
-          const stepTime = 1800 / 50;
-
-          const observer = new IntersectionObserver(
-            (entries) => {
-              entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                  const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
-                      current = target;
-                      clearInterval(timer);
-                    }
-                    el.textContent =
-                      Math.floor(current) + (isPercent ? "%" : "");
-                  }, stepTime);
-                  observer.unobserve(el);
-                }
-              });
+      // 2. Staggered tech cards
+      gsap.utils.toArray(".tech-card").forEach((el, i) => {
+        gsap.fromTo(
+          el,
+          {opacity: 0, y: 30},
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            ease: "power3.out",
+            delay: i * 0.04,
+            scrollTrigger: {
+              trigger: el,
+              start: "top 88%",
+              toggleActions: "play none none none",
             },
-            {threshold: 0.6},
-          );
-          observer.observe(el);
-        });
-      }
-      animateCounters();
+          },
+        );
+      });
 
-      /* ═════════════════════ MOBILE MENU ═════════════════════ */
+      // 3. Everything else with .reveal (headers, CTAs, etc.)
+      gsap.utils
+        .toArray(".reveal:not(.service-row):not(.tech-card)")
+        .forEach((el) => {
+          gsap.fromTo(
+            el,
+            {opacity: 0, y: 30},
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.7,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: el,
+                start: "top 88%",
+                toggleActions: "play none none none",
+              },
+            },
+          );
+        });
+
+      /* ═══════════════════════════════════════════
+         MOBILE MENU
+      ═══════════════════════════════════════════ */
       (function () {
         const hamburger = document.getElementById("hamburger");
         const menu = document.getElementById("mobileMenu");
@@ -1998,7 +1780,6 @@
           document.body.classList.remove("menu-open");
           isOpen = false;
         }
-
         hamburger.addEventListener("click", () =>
           isOpen ? closeMenu() : openMenu(),
         );
@@ -2007,11 +1788,9 @@
         document.addEventListener("keydown", (e) => {
           if (e.key === "Escape" && isOpen) closeMenu();
         });
-        document.querySelectorAll("#mobileMenuLinks a").forEach((a) => {
-          a.addEventListener("click", () => {
-            closeMenu();
-          });
-        });
+        document
+          .querySelectorAll("#mobileMenuLinks a")
+          .forEach((a) => a.addEventListener("click", closeMenu));
         window.addEventListener("resize", () => {
           if (window.innerWidth > 768 && isOpen) closeMenu();
         });
