@@ -3,6 +3,22 @@
    ═══════════════════════════════════════════════ */
 const projects = [
   {
+    title: "Makuti Thatching Solutions",
+    image:
+      "https://res.cloudinary.com/dnadawobi/image/upload/v1786013045/Screenshot_2026-08-06_134246_wegsod.png",
+    tags: ["React", "Node.js", "Framer Motion"],
+    link: "https://makutiroofing.co.ke/",
+    desc: "Roofing company based in Nairobi",
+  },
+  {
+    title: "Monochrome Engineering",
+    image:
+      "https://res.cloudinary.com/dnadawobi/image/upload/v1786013599/Screenshot_2026-08-06_135153_qkgavc.png",
+    tags: ["React", "HTML", "CSS"],
+    link: "https://monochrome.co.ke/",
+    desc: "Construction suppliers",
+  },
+  {
     title: "Al-Ahsan Motors",
     image:
       "https://res.cloudinary.com/dnadawobi/image/upload/v1783969940/Screenshot_2026-07-13_221146_ipqbwh.png",
@@ -26,22 +42,6 @@ const projects = [
   //   link: "https://lak-eta.vercel.app/",
   //   desc: "Professional website for a law firm",
   // },
-  {
-    title: "Makuti Thatching Solutions",
-    image:
-      "https://res.cloudinary.com/dnadawobi/image/upload/v1786013045/Screenshot_2026-08-06_134246_wegsod.png",
-    tags: ["React", "Node.js", "Framer Motion"],
-    link: "https://makutiroofing.co.ke/",
-    desc: "Roofing company based in Nairobi",
-  },
-  {
-    title: "Monochrome Engineering",
-    image:
-      "https://res.cloudinary.com/dnadawobi/image/upload/v1786013599/Screenshot_2026-08-06_135153_qkgavc.png",
-    tags: ["React", "HTML", "CSS"],
-    link: "https://monochrome.co.ke/",
-    desc: "Construction suppliers based in Nairobi",
-  },
   {
     title: "Mindful Living KE",
     image:
