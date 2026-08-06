@@ -27,6 +27,14 @@ const projects = [
   //   desc: "Professional website for a law firm",
   // },
   {
+    title: "Makuti Thatching Solutions",
+    image:
+      "https://res.cloudinary.com/dnadawobi/image/upload/v1786013045/Screenshot_2026-08-06_134246_wegsod.png",
+    tags: ["React", "Node.js", "Framer Motion"],
+    link: "https://makutiroofing.co.ke/",
+    desc: "Roofing company based in Nairobi",
+  },
+  {
     title: "Mindful Living KE",
     image:
       "https://res.cloudinary.com/dnadawobi/image/upload/v1780596696/mindfulLiving_gy9yfn.png",
