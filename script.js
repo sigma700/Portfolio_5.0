@@ -35,6 +35,14 @@ const projects = [
     desc: "Roofing company based in Nairobi",
   },
   {
+    title: "Monochrome Engineering",
+    image:
+      "https://res.cloudinary.com/dnadawobi/image/upload/v1786013599/Screenshot_2026-08-06_135153_qkgavc.png",
+    tags: ["React", "HTML", "CSS"],
+    link: "https://monochrome.co.ke/",
+    desc: "Construction suppliers based in Nairobi",
+  },
+  {
     title: "Mindful Living KE",
     image:
       "https://res.cloudinary.com/dnadawobi/image/upload/v1780596696/mindfulLiving_gy9yfn.png",
