@@ -34,14 +34,14 @@ const projects = [
     link: "https://regal-scone-d475d1.netlify.app/",
     desc: "Professional website for a HVAC company based in Kenya",
   },
-  // {
-  //   title: "LAK Advocates",
-  //   image:
-  //     "https://res.cloudinary.com/dnadawobi/image/upload/v1782217742/Screenshot_2026-06-17_104818_hgtqtp.png",
-  //   tags: ["NEXT Js", "TailWindCss", "FRAMER-MOTION"],
-  //   link: "https://lak-eta.vercel.app/",
-  //   desc: "Professional website for a law firm",
-  // },
+  {
+    title: "LAK Advocates",
+    image:
+      "https://res.cloudinary.com/dnadawobi/image/upload/v1782217742/Screenshot_2026-06-17_104818_hgtqtp.png",
+    tags: ["NEXT Js", "TailWindCss", "FRAMER-MOTION"],
+    link: "https://lak-eta.vercel.app/",
+    desc: "Professional website for a law firm",
+  },
   {
     title: "Mindful Living KE",
     image:
